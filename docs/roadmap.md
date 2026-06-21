@@ -4,13 +4,14 @@ Phase 1
 - Website
 - Books
 - Sample Chapters
+- Blog
 
 Phase 2
 - Interactive Practice
+- Visual Mathematics
 
 Phase 3
-- AI Tutor
+- Teacher Resources
 
 Phase 4
-- Teacher Platform
 - School Partnerships

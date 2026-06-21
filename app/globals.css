@@ -1,0 +1,24 @@
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #1E1B4B;
+  --color-primary-dark: #0F0D2E;
+  --color-secondary: #F8F9FA;
+  --color-secondary-muted: #E9ECEF;
+  --color-accent-numbers: #3B82F6;
+  --color-accent-algebra: #8B5CF6;
+  --color-accent-geometry: #10B981;
+  --color-accent-patterns: #F97316;
+  --color-accent-logic: #14B8A6;
+  --font-sans: "Inter", system-ui, sans-serif;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-secondary text-primary font-sans antialiased;
+  }
+}

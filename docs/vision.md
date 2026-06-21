@@ -11,6 +11,5 @@ Books are our first product.
 
 Future products:
 - Interactive learning
-- AI tutoring
 - Teacher resources
 - School partnerships
