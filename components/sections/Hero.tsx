@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { siteConfig } from "@/config/site";
+import { siteConfig } from "@/data/siteConfig";
 
 export function Hero() {
   return (

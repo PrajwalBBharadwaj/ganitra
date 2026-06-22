@@ -1,47 +1,10 @@
 import Link from "next/link";
-import { siteConfig } from "@/config/site";
+import { siteConfig } from "@/data/siteConfig";
+import { books } from "@/data/books";
+import { blogPosts } from "@/data/blog";
 import { Hero } from "@/components/sections/Hero";
 import { Mission } from "@/components/sections/Mission";
 import { SimpleCTA } from "@/components/sections/SimpleCTA";
-
-const bookSeries = [
-  {
-    title: "Foundations",
-    gradeRange: "Grades 1–4",
-    description: "Numbers, arithmetic, and patterns — building a strong mathematical foundation.",
-    accent: "bg-accent-numbers",
-  },
-  {
-    title: "Core Math",
-    gradeRange: "Grades 5–7",
-    description: "Fractions, algebra introduction, and geometry — connecting concepts.",
-    accent: "bg-accent-algebra",
-  },
-  {
-    title: "Advanced Mathematics",
-    gradeRange: "Grades 8–10",
-    description: "Algebra, trigonometry, reasoning, and problem solving — mastering mathematical thinking.",
-    accent: "bg-accent-logic",
-  },
-];
-
-const blogPreviews = [
-  {
-    title: "Why Visual Mathematics Matters",
-    excerpt: "Understanding why visual thinking transforms how students learn and retain mathematical concepts.",
-    slug: "coming-soon",
-  },
-  {
-    title: "From Memorization to Understanding",
-    excerpt: "How shifting from memorization to conceptual understanding changes everything.",
-    slug: "coming-soon",
-  },
-  {
-    title: "Building Number Sense in Early Grades",
-    excerpt: "Practical approaches to developing strong number sense in grades 1-4.",
-    slug: "coming-soon",
-  },
-];
 
 export default function HomePage() {
   return (
@@ -107,7 +70,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Books Preview Section */}
+      {/* Books Preview Section — from data/books.ts */}
       <section className="bg-white py-16 sm:py-20">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <h2 className="text-center text-3xl font-bold tracking-tight text-primary sm:text-4xl">
@@ -118,21 +81,21 @@ export default function HomePage() {
             from grades 1 through 10.
           </p>
           <div className="mt-10 grid gap-6 sm:grid-cols-3">
-            {bookSeries.map((series) => (
+            {books.map((book) => (
               <div
-                key={series.title}
+                key={book.id}
                 className="group relative overflow-hidden rounded-xl border border-secondary-muted bg-white shadow-sm transition-shadow hover:shadow-md"
               >
-                <div className={`h-2 ${series.accent}`} />
+                <div className={`h-2 ${book.accent}`} />
                 <div className="p-6">
                   <h3 className="text-xl font-bold text-primary">
-                    {series.title}
+                    {book.title}
                   </h3>
                   <p className="mt-1 text-sm font-medium text-primary/50">
-                    {series.gradeRange}
+                    {book.gradeRange}
                   </p>
                   <p className="mt-3 text-sm leading-relaxed text-primary/70">
-                    {series.description}
+                    {book.shortDescription}
                   </p>
                   <div className="mt-6 flex gap-3">
                     <Link
@@ -165,16 +128,16 @@ export default function HomePage() {
         secondaryHref="/contact#request-book"
       />
 
-      {/* Blog Preview Section */}
+      {/* Blog Preview Section — from data/blog.ts */}
       <section className="bg-white py-16 sm:py-20">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <h2 className="text-center text-3xl font-bold tracking-tight text-primary sm:text-4xl">
             From Our Blog
           </h2>
           <div className="mt-10 grid gap-6 sm:grid-cols-3">
-            {blogPreviews.map((post) => (
+            {blogPosts.slice(0, 3).map((post) => (
               <div
-                key={post.title}
+                key={post.slug}
                 className="rounded-xl border border-secondary-muted bg-white p-6 shadow-sm"
               >
                 <h3 className="text-lg font-semibold text-primary">{post.title}</h3>
@@ -182,7 +145,7 @@ export default function HomePage() {
                   {post.excerpt}
                 </p>
                 <Link
-                  href="/blog"
+                  href={`/blog/${post.slug}`}
                   className="mt-4 inline-block text-sm font-semibold text-primary underline-offset-2 hover:underline"
                 >
                   Read more

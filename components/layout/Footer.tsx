@@ -1,29 +1,6 @@
 import Link from "next/link";
-import { siteConfig } from "@/config/site";
-
-const footerGroups = [
-  {
-    title: "Platform",
-    links: [
-      { label: "Home", href: "/" },
-      { label: "About", href: "/about" },
-      { label: "Future", href: "/future" },
-    ],
-  },
-  {
-    title: "Books",
-    links: [
-      { label: "All Books", href: "/books" },
-      { label: "Sample Chapters", href: "/sample-chapters" },
-    ],
-  },
-  {
-    title: "Contact",
-    links: [
-      { label: "Contact Us", href: "/contact" },
-    ],
-  },
-];
+import { siteConfig } from "@/data/siteConfig";
+import { footerGroups } from "@/data/navigation";
 
 export function Footer() {
   return (

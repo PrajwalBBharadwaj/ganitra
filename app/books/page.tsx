@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import Link from "next/link";
+import { books } from "@/data/books";
 
 export const metadata: Metadata = {
   title: "Mathematics Textbooks by Grade",
@@ -13,8 +15,57 @@ export default function BooksPage() {
         Books
       </h1>
       <p className="mt-4 text-lg text-primary/70">
-        Explore our textbook collections.
+        Explore our textbook collections. Each series builds on the previous one,
+        creating a complete learning journey from grades 1 through 10.
       </p>
+
+      <div className="mt-10 grid gap-6 sm:grid-cols-3">
+        {books.map((book) => (
+          <div
+            key={book.id}
+            className="group relative overflow-hidden rounded-xl border border-secondary-muted bg-white shadow-sm transition-shadow hover:shadow-md"
+          >
+            <div className={`h-2 ${book.accent}`} />
+            <div className="p-6">
+              <h2 className="text-xl font-bold text-primary">{book.title}</h2>
+              <p className="mt-1 text-sm font-medium text-primary/50">
+                {book.gradeRange}
+              </p>
+              <p className="mt-3 text-sm leading-relaxed text-primary/70">
+                {book.shortDescription}
+              </p>
+
+              <div className="mt-4">
+                <h3 className="text-xs font-semibold uppercase tracking-wider text-primary/40">
+                  Focus Topics
+                </h3>
+                <ul className="mt-2 space-y-1">
+                  {book.chapters.map((ch) => (
+                    <li key={ch.id} className="text-sm text-primary/60">
+                      &bull; {ch.title}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              <div className="mt-6 flex gap-3">
+                <Link
+                  href="/sample-chapters"
+                  className="text-sm font-semibold text-primary underline-offset-2 hover:underline"
+                >
+                  View Sample
+                </Link>
+                <Link
+                  href="/contact#request-book"
+                  className="text-sm font-semibold text-primary underline-offset-2 hover:underline"
+                >
+                  Request Book
+                </Link>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
     </div>
   );
 }

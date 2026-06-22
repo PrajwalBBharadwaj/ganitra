@@ -2,16 +2,8 @@
 
 import Link from "next/link";
 import { useState } from "react";
-import { siteConfig } from "@/config/site";
-
-const navLinks = [
-  { label: "Home", href: "/" },
-  { label: "Books", href: "/books" },
-  { label: "Sample Chapters", href: "/sample-chapters" },
-  { label: "Blog", href: "/blog" },
-  { label: "About", href: "/about" },
-  { label: "Contact", href: "/contact" },
-];
+import { siteConfig } from "@/data/siteConfig";
+import { headerNav } from "@/data/navigation";
 
 export function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -26,7 +18,7 @@ export function Header() {
 
         {/* Desktop nav */}
         <div className="hidden items-center gap-6 md:flex">
-          {navLinks.map((link) => (
+          {headerNav.map((link) => (
             <Link
               key={link.href}
               href={link.href}
@@ -79,7 +71,7 @@ export function Header() {
       {mobileOpen && (
         <div className="border-t border-secondary-muted md:hidden">
           <div className="space-y-1 px-4 pb-6 pt-2">
-            {navLinks.map((link) => (
+            {headerNav.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
