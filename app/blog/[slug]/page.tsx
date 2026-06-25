@@ -36,12 +36,12 @@ export default async function BlogArticlePage({ params }: Props) {
     return (
       <div className="mx-auto max-w-3xl px-4 py-12 sm:px-6 lg:px-8">
         <h1 className="text-3xl font-bold text-primary">Post Not Found</h1>
-        <p className="mt-4 text-primary/70">
+        <p className="mt-4 text-text-secondary">
           The article you're looking for doesn't exist.
         </p>
         <Link
           href="/blog"
-          className="mt-6 inline-block text-sm font-semibold text-primary underline-offset-2 hover:underline"
+          className="mt-6 inline-block text-sm font-semibold text-secondary-brand underline-offset-2 hover:underline"
         >
           &larr; Back to Blog
         </Link>
@@ -53,20 +53,20 @@ export default async function BlogArticlePage({ params }: Props) {
     <article className="mx-auto max-w-3xl px-4 py-12 sm:px-6 lg:px-8">
       <Link
         href="/blog"
-        className="text-sm font-semibold text-primary underline-offset-2 hover:underline"
+        className="text-sm font-semibold text-secondary-brand underline-offset-2 hover:underline"
       >
         &larr; Back to Blog
       </Link>
 
       <header className="mt-6">
-        <time className="text-sm font-medium text-primary/40">{post.date}</time>
+        <time className="text-sm font-medium text-text-muted">{post.date}</time>
         <h1 className="mt-2 text-3xl font-bold tracking-tight text-primary sm:text-4xl">
           {post.title}
         </h1>
-        <p className="mt-3 text-lg text-primary/60">{post.excerpt}</p>
+        <p className="mt-3 text-lg text-text-secondary">{post.excerpt}</p>
       </header>
 
-      <div className="mt-10 space-y-4 text-base leading-relaxed text-primary/80">
+      <div className="prose prose-lg mt-10 max-w-none text-text-secondary">
         {post.content.split("\n\n").map((paragraph, i) => {
           if (paragraph.startsWith("## ")) {
             return (
@@ -91,7 +91,11 @@ export default async function BlogArticlePage({ params }: Props) {
               </ul>
             );
           }
-          return <p key={i}>{paragraph}</p>;
+          return (
+            <p key={i} className="leading-relaxed">
+              {paragraph}
+            </p>
+          );
         })}
       </div>
     </article>
