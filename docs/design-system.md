@@ -43,43 +43,45 @@ Use these color values unless the brand guide is formally updated.
 
 | Token | Hex | Usage |
 | --- | --- | --- |
-| `indigo-950` | `#17133F` | Deep brand foundation, dark text on light backgrounds, dark sections. |
-| `navy-900` | `#0B2341` | Secondary brand foundation, headers, footer, trust sections. |
-| `off-white` | `#FAF8F2` | Warm page background. |
-| `gray-50` | `#F7F8FA` | Alternate section background. |
-| `gray-100` | `#ECEFF3` | Borders, soft surfaces. |
-| `gray-500` | `#667085` | Secondary text. |
-| `gray-800` | `#1F2937` | Body text when not using indigo. |
-| `white` | `#FFFFFF` | Cards and high-contrast text on dark sections. |
+| `primary` | `#1E3A8A` | Deep indigo — hero, headings, primary actions, footer. |
+| `primary-dark` | `#0F0D2E` | Darker indigo for hover states and deep backgrounds. |
+| `background` | `#FCFCFA` | Warm off-white page background. |
+| `surface` | `#F5F7FB` | Alternate section background, cards. |
+| `surface-raised` | `#FFFFFF` | Elevated cards and content blocks. |
+| `text` | `#0F172A` | Primary text color. |
+| `text-secondary` | `#475569` | Secondary text. |
+| `text-muted` | `#64748B` | Helper text, metadata. |
+| `border` | `#E2E8F0` | Borders and soft surfaces. |
 
 ### Mathematical Domain Accents
 
 | Domain | Token | Hex | Usage |
 | --- | --- | --- | --- |
-| Numbers | `accent-blue` | `#2563EB` | Foundations, arithmetic, number sense. |
-| Algebra | `accent-purple` | `#7C3AED` | Core Math, variables, structure. |
-| Geometry | `accent-green` | `#16A34A` | Shapes, space, diagrams. |
-| Patterns | `accent-orange` | `#F97316` | Sequences, patterns, visual rhythm. |
-| Logic | `accent-teal` | `#0D9488` | Reasoning, proof, problem solving. |
+| Discovery | `discovery` | `#06B6D4` | Cyan — visual learning, See method, CTAs. |
+| Insight | `insight` | `#7C3AED` | Violet — understanding, conceptual clarity. |
+| Application | `application` | `#F59E0B` | Amber — problem solving, Apply method. |
+| Curiosity | `curiosity` | `#F97316` | Orange — attention, warnings, highlights. |
+| Success | `success` | `#10B981` | Emerald — positive states, confirmations. |
 
 ### Semantic Colors
 
 | Token | Hex | Usage |
 | --- | --- | --- |
-| `success` | `#15803D` | Successful form submission. |
-| `warning` | `#B45309` | Coming-soon and caution states. |
+| `success` | `#10B981` | Successful form submission. |
+| `warning` | `#F59E0B` | Coming-soon and caution states. |
 | `error` | `#B42318` | Form errors. |
-| `focus` | `#2563EB` | Focus ring. |
+| `focus` | `#1E3A8A` | Focus ring. |
 
 ### Color Rules
 
-- Primary backgrounds should be `off-white`, `gray-50`, `white`, `indigo-950`, or `navy-900`.
+- Primary backgrounds should be `background`, `surface`, `surface-raised`, `primary`, or `primary-dark`.
 - Use accent colors for mathematical domains, small highlights, icons, badges, and diagrams.
 - Do not create new random colors.
 - Do not make the site dominated by a single purple or blue gradient.
 - Text on dark backgrounds must be white or very light.
-- Text on light backgrounds should usually be `indigo-950` or `gray-800`.
+- Text on light backgrounds should usually be `text` or `text-secondary`.
 - Accent colors must not be used for long body text.
+- Maintain approximately 80% neutral surfaces and 20% accent usage.
 
 ## Typography
 
@@ -194,7 +196,7 @@ Rules:
 
 - Cards should use 8px radius unless a preview surface needs 12px.
 - Do not use overly rounded cards for the main visual language.
-- Use 1px borders with `gray-100` for light surfaces.
+- Use 1px borders with `border` for light surfaces.
 
 ## Shadows
 
@@ -228,6 +230,63 @@ Suggested method icons:
 - Understand: nodes, layers, or lightbulb icon.
 - Apply: check, target, or puzzle/strategy icon.
 
+## Mathematical Visual Language
+
+### Background Patterns
+
+Use low-opacity (3–5%) mathematical patterns as global backgrounds:
+
+- **Coordinate Grid**: Light blue strokes with axes and tick marks.
+- **Dot Matrix**: Violet dots in regular grid pattern.
+- **Geometry Lines**: Faint construction lines and geometric meshes.
+
+Rules:
+
+- Must be subtle (never competes with text).
+- Must scale responsively.
+- Must repeat consistently across all pages.
+- Opacity should never exceed 5%.
+
+### Mathematical Elements
+
+Use these SVG elements throughout the experience:
+
+- Circles and arcs (intersecting circles, concentric circles)
+- Coordinate grids
+- Geometric shapes (triangles, hexagons, polygons)
+- Number patterns and spirals
+- Dot matrices
+- Geometric meshes and tessellations
+- Construction lines and compass marks
+
+Rules:
+
+- Appear in ALL major sections.
+- Opacity 3–20%.
+- Always decorative, never dominant.
+- Must feel like geometry notebook sketches.
+- No human illustrations or stock graphics.
+
+### Educational Callout System
+
+Five reusable callout styles for chapter content:
+
+| Callout | Border Color | Background | Icon |
+| --- | --- | --- | --- |
+| Key Idea | `primary` (indigo) | `#EFF6FF` (blue tint) | Lightbulb |
+| Did You Notice? | `discovery` (cyan) | `#ECFEFF` (cyan tint) | Eye |
+| Example | `application` (amber) | `#FFFBEB` (amber tint) | Pencil |
+| Insight | `insight` (violet) | `#F5F3FF` (violet tint) | Spark |
+| Common Mistake | `curiosity` (orange) | `#FFF7ED` (orange tint) | Warning |
+
+Rules:
+
+- Must be reusable components.
+- Must be consistent system-wide.
+- Left border 4px.
+- Rounded corners.
+- Clear title and body text hierarchy.
+
 ## Visual Assets
 
 Use:
@@ -253,6 +312,8 @@ Hero visual:
 - Must clearly signal mathematics in the first viewport.
 - Should include mathematical structure such as shapes, grids, numbers, patterns, or diagrams.
 - Should not be a decorative gradient alone.
+- Two-column layout: 60% text, 40% mathematical SVG visualization.
+- SVG must include: coordinate grid, intersecting circles, triangle construction, dot nodes.
 
 Placeholder assets:
 
@@ -286,17 +347,20 @@ States:
 
 Requirements:
 
+- Dark navy background (`primary-dark`).
+- Faint geometric line pattern overlay.
 - Includes brand summary.
 - Includes grouped links.
 - Includes contact link.
 - Includes future product labels or links.
 - Uses centralized company name and contact data.
+- Must feel like "mathematical night sky / blueprint".
 
 ### Button
 
 Variants:
 
-- Primary: dark indigo or navy background with white text.
+- Primary: `discovery` (cyan) background with `primary-dark` text.
 - Secondary: white or transparent background with dark text and border.
 - Accent: domain accent background only for contextual actions.
 - Text: inline navigation-style action.
@@ -315,20 +379,24 @@ Rules:
 - Buttons must have at least 44px touch height on mobile.
 - Use clear action labels.
 - Do not use payment wording in Phase 1.
+- Hover: `scale(1.02)` with 200ms transition.
 
 ### Hero Section
 
 Requirements:
 
-- Strong H1.
+- Strong H1 with `leading-[1.1]`.
 - Short supporting copy.
 - One primary CTA and one secondary CTA.
-- Mathematical visual signal.
+- Mathematical visual signal on right side (desktop only).
+- Overline label above H1.
 - Hint of next section visible where practical.
 
 Homepage hero:
 
 - H1 must be `Mathematics becomes easy when you can see it.`
+- Background: `primary` (deep indigo) with subtle dot grid pattern.
+- Right side: SVG composition with coordinate grid, intersecting circles, triangle construction.
 
 ### Section Header
 
@@ -347,25 +415,58 @@ Required content:
 - Grade range.
 - Focus topics.
 - Short description.
-- Accent visual.
+- Accent visual (colored top bar).
+- Chapter count badge.
 - `View Sample` CTA.
 - `Request Book` CTA.
 
 States:
 
 - Default.
-- Hover.
+- Hover (lift + shadow increase).
 - Focus within.
 
 Rules:
 
 - Cards must be equal-height within a row on desktop where practical.
 - Cards must stack cleanly on mobile.
+- Each book has unique mathematical background pattern:
+  - Foundations: cyan dot matrix.
+  - Core Math: blue coordinate grid.
+  - Advanced: violet geometric mesh.
+- Hover: `translateY(-4px)` with shadow increase.
+
+### Method Card (Ganitra Method)
+
+Required content:
+
+- Icon (geometric SVG).
+- Title (See / Understand / Apply).
+- Description.
+- Colored accent underline.
+
+Visual design:
+
+- SEE: cyan gradient background + dot grid + eye icon.
+- UNDERSTAND: violet gradient background + network lines + node graph icon.
+- APPLY: amber gradient background + construction marks + compass icon.
+
+Rules:
+
+- Each card must feel visually unique.
+- Must not be uniform UI components.
+- Must feel like 3 stages of cognition.
+- Hover: `translateY(-4px)` with shadow increase.
 
 ### Sample Preview
 
 Requirements:
 
+- Learning header block before PDF:
+  - Book title.
+  - Chapter title.
+  - Concept description.
+  - Concept chips (colored pills).
 - Shows sample page, PDF, or placeholder preview.
 - Provides navigation between preview pages if multiple pages exist.
 - Provides request-book CTA.
@@ -381,6 +482,26 @@ Preferred controls:
 Phase 1 priority:
 
 - Stable, accessible mobile preview is more important than advanced controls.
+
+### Blog Card
+
+Required content:
+
+- Category indicator (colored bar).
+- Title.
+- Excerpt.
+- Date.
+- Reading time (if available).
+- Top border color accent.
+
+Color cycle:
+
+- cyan → violet → amber → repeat.
+
+Rules:
+
+- No generic blog cards.
+- Hover: title color change to `discovery`, card lift.
 
 ### Future Product Card
 
@@ -425,7 +546,7 @@ Requirements:
 Form styling:
 
 - Inputs use `radius-sm`.
-- Borders use `gray-100` or accessible equivalent.
+- Borders use `border` or accessible equivalent.
 - Focus ring uses `focus`.
 - Error text uses `error`.
 
@@ -435,9 +556,10 @@ Allowed:
 
 - Fade-ins.
 - Subtle scroll reveals.
-- Hover lifts.
+- Hover lifts (`translateY(-4px)`).
 - Smooth menu transitions.
 - Preview navigation transitions.
+- Button scale (`scale(1.02)`).
 
 Avoid:
 
@@ -449,8 +571,24 @@ Avoid:
 Rules:
 
 - Respect reduced-motion preferences.
-- Keep transitions between 150ms and 300ms.
+- Keep transitions between 150ms and 300ms (standard: 200ms).
 - Do not animate large text blocks in ways that harm readability.
+- Use `transition-all` for smooth state changes.
+
+## Microinteractions
+
+Standard patterns:
+
+- **Card Hover**: `translateY(-4px)` + shadow increase + 200ms ease.
+- **Button Hover**: `scale(1.02)` + 200ms ease.
+- **Link Hover**: Color shift to `discovery` + underline.
+- **Focus**: Visible focus ring using `focus` color.
+
+Rules:
+
+- Keep transitions between 150ms and 300ms.
+- Use standard easing (ease-out).
+- Do not overload with motion.
 
 ## Accessibility
 
@@ -476,10 +614,11 @@ Minimum contrast:
 Mobile:
 
 - Single-column layout.
-- Touch-friendly controls.
+- Touch-friendly controls (minimum 44px touch height).
 - Navigation collapses.
 - Forms are thumb-friendly.
 - Preview controls remain reachable.
+- Hero SVG visualization hidden on mobile.
 
 Tablet:
 
@@ -490,6 +629,7 @@ Desktop:
 
 - Use richer layouts and multi-column grids.
 - Keep text readable and constrained.
+- Show hero SVG visualization (60% text / 40% visual).
 
 Large displays:
 
@@ -511,7 +651,7 @@ Design must support SEO by:
 
 Implementation should map design tokens into Tailwind theme values where practical:
 
-- Colors from this document.
+- Colors from this document (defined in `app/globals.css` @theme).
 - Font family: Inter.
 - Spacing scale from this document or Tailwind defaults aligned to it.
 - Border radius tokens.
@@ -533,3 +673,6 @@ Before marking UI complete:
 - Future products are clearly marked coming soon.
 - Placeholder content is labeled.
 - The result feels like a mathematics understanding platform, not only a book storefront.
+- Mathematical SVG graphics appear in major sections.
+- Callout system is implemented and reusable.
+- Microinteractions are consistent (200ms transitions).

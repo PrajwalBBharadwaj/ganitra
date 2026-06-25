@@ -11,51 +11,45 @@ export default function HomePage() {
     <>
       <Hero />
 
-      {/* Problem Section — comparison cards */}
+      {/* Problem Section — 3 cards with arrows */}
       <section className="bg-surface py-16 sm:py-20">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="text-center">
-            <h2 className="text-3xl font-bold tracking-tight text-primary sm:text-4xl">
-              The Problem with Traditional Math Education
-            </h2>
-            <p className="mx-auto mt-4 max-w-2xl text-lg text-text-secondary">
-              Many students memorize mathematics. Few truly understand it.
-            </p>
-          </div>
+          <h2 className="text-center text-2xl font-bold tracking-tight text-primary sm:text-3xl">
+            THE PROBLEM
+          </h2>
 
-          <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {/* Traditional Math cards */}
-            <div className="rounded-xl border border-border bg-orange-50/50 p-6">
-              <div className="mb-3 h-1 w-8 rounded-full bg-curiosity" />
-              <h3 className="text-lg font-semibold text-primary">Memorization</h3>
-              <p className="mt-2 text-sm text-text-secondary">Rules and procedures are memorized without understanding why they work.</p>
-            </div>
-            <div className="rounded-xl border border-border bg-orange-50/50 p-6">
-              <div className="mb-3 h-1 w-8 rounded-full bg-curiosity" />
-              <h3 className="text-lg font-semibold text-primary">Formulas First</h3>
-              <p className="mt-2 text-sm text-text-secondary">Symbols and equations are introduced before the ideas they represent.</p>
-            </div>
-            <div className="rounded-xl border border-border bg-orange-50/50 p-6">
-              <div className="mb-3 h-1 w-8 rounded-full bg-curiosity" />
-              <h3 className="text-lg font-semibold text-primary">Abstract</h3>
-              <p className="mt-2 text-sm text-text-secondary">Mathematics feels disconnected from reality and intuition.</p>
+          <div className="mt-10 grid gap-6 lg:grid-cols-3">
+            {/* Traditional Math */}
+            <div className="rounded-xl border border-border bg-orange-50/50 p-6 text-center">
+              <h3 className="text-lg font-semibold text-primary">Traditional Math</h3>
+              <ul className="mt-4 space-y-2 text-sm text-text-secondary">
+                <li>• Memorization</li>
+                <li>• Formulas First</li>
+                <li>• Abstract</li>
+                <li>• Disconnected</li>
+              </ul>
             </div>
 
-            {/* Ganitra cards */}
-            <div className="rounded-xl border border-discovery/20 bg-discovery/5 p-6">
-              <div className="mb-3 h-1 w-8 rounded-full bg-discovery" />
-              <h3 className="text-lg font-semibold text-primary">Visual</h3>
-              <p className="mt-2 text-sm text-text-secondary">Concepts are seen before they are symbolized. Patterns reveal structure.</p>
+            {/* Leads To */}
+            <div className="rounded-xl border border-border bg-surface-raised p-6 text-center">
+              <h3 className="text-lg font-semibold text-primary">Leads To</h3>
+              <ul className="mt-4 space-y-2 text-sm text-text-secondary">
+                <li>• Confusion</li>
+                <li>• Fear of Math</li>
+                <li>• Temporary Learning</li>
+                <li>• Low Confidence</li>
+              </ul>
             </div>
-            <div className="rounded-xl border border-insight/20 bg-insight/5 p-6">
-              <div className="mb-3 h-1 w-8 rounded-full bg-insight" />
-              <h3 className="text-lg font-semibold text-primary">Intuitive</h3>
-              <p className="mt-2 text-sm text-text-secondary">Understanding comes first. Procedures follow naturally from insight.</p>
-            </div>
-            <div className="rounded-xl border border-application/20 bg-application/5 p-6">
-              <div className="mb-3 h-1 w-8 rounded-full bg-application" />
-              <h3 className="text-lg font-semibold text-primary">Connected</h3>
-              <p className="mt-2 text-sm text-text-secondary">Ideas build on each other. Mathematics becomes a coherent system.</p>
+
+            {/* Ganitra Approach */}
+            <div className="rounded-xl border border-discovery/20 bg-discovery/5 p-6 text-center">
+              <h3 className="text-lg font-semibold text-primary">Ganitra Approach</h3>
+              <ul className="mt-4 space-y-2 text-sm text-text-secondary">
+                <li>• Visual Understanding</li>
+                <li>• Intuition First</li>
+                <li>• Connections</li>
+                <li>• Long-term Confidence</li>
+              </ul>
             </div>
           </div>
         </div>
@@ -63,17 +57,13 @@ export default function HomePage() {
 
       <Mission />
 
-      {/* Ganitra Method — 3 large distinct cards */}
+      {/* Ganitra Method — 3 distinct gradient cards */}
       <section className="bg-surface-raised py-16 sm:py-20">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="text-center">
-            <h2 className="text-3xl font-bold tracking-tight text-primary sm:text-4xl">
-              The Ganitra Method
-            </h2>
-            <p className="mx-auto mt-3 max-w-2xl text-text-secondary">
-              Three principles that guide everything we create.
-            </p>
-          </div>
+          <h2 className="text-center text-2xl font-bold tracking-tight text-primary sm:text-3xl">
+            THE GANITRA METHOD
+          </h2>
+
           <div className="mt-10 grid gap-6 sm:grid-cols-3">
             {/* See — cyan */}
             <div className="group relative overflow-hidden rounded-xl border border-discovery/20 bg-gradient-to-br from-discovery/10 to-discovery/5 p-6 shadow-sm transition-all hover:shadow-md hover:-translate-y-1">
@@ -92,7 +82,7 @@ export default function HomePage() {
                   </svg>
                 </div>
                 <h3 className="mt-4 text-xl font-bold text-primary">See</h3>
-                <p className="mt-2 text-sm leading-relaxed text-text-secondary">Visual understanding through patterns, diagrams, and mathematical structures.</p>
+                <p className="mt-2 text-sm leading-relaxed text-text-secondary">Visualize the concept. We start with what you can see. Pictures, patterns and diagrams make ideas clear.</p>
                 <div className="mt-4 h-1 w-12 rounded-full bg-discovery" />
               </div>
             </div>
@@ -117,7 +107,7 @@ export default function HomePage() {
                   </svg>
                 </div>
                 <h3 className="mt-4 text-xl font-bold text-primary">Understand</h3>
-                <p className="mt-2 text-sm leading-relaxed text-text-secondary">Conceptual clarity that connects ideas rather than isolated facts.</p>
+                <p className="mt-2 text-sm leading-relaxed text-text-secondary">Build deep understanding. We connect the dots. You discover how and why it works.</p>
                 <div className="mt-4 h-1 w-12 rounded-full bg-insight" />
               </div>
             </div>
@@ -140,7 +130,7 @@ export default function HomePage() {
                   </svg>
                 </div>
                 <h3 className="mt-4 text-xl font-bold text-primary">Apply</h3>
-                <p className="mt-2 text-sm leading-relaxed text-text-secondary">Problem-solving confidence built on genuine comprehension.</p>
+                <p className="mt-2 text-sm leading-relaxed text-text-secondary">Use it with confidence. We practice in meaningful ways. You apply math to solve real problems.</p>
                 <div className="mt-4 h-1 w-12 rounded-full bg-application" />
               </div>
             </div>
@@ -148,75 +138,31 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Books Preview Section — unique backgrounds per book */}
+      {/* Books Preview Section */}
       <section className="bg-background py-16 sm:py-20">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="text-center">
-            <h2 className="text-3xl font-bold tracking-tight text-primary sm:text-4xl">
-              Our Textbook Series
-            </h2>
-            <p className="mx-auto mt-3 max-w-2xl text-lg text-text-secondary">
-              Three collections designed for sequential, visual mathematics learning
-              from grades 1 through 10.
-            </p>
-          </div>
+          <h2 className="text-center text-2xl font-bold tracking-tight text-primary sm:text-3xl">
+            EXPLORE OUR BOOKS
+          </h2>
           <div className="mt-10 grid gap-6 sm:grid-cols-3">
             {books.map((book) => (
               <div
                 key={book.id}
                 className="group relative overflow-hidden rounded-xl border border-border bg-surface shadow-sm transition-all hover:shadow-md hover:-translate-y-1"
               >
-                {/* Unique background per book */}
-                <div className="absolute inset-0 opacity-[0.04]">
-                  {book.id === "foundations" && (
-                    <div className="h-full w-full" style={{
-                      backgroundImage: "radial-gradient(circle at 2px 2px, #06B6D4 1px, transparent 0)",
-                      backgroundSize: "20px 20px"
-                    }} />
-                  )}
-                  {book.id === "core-math" && (
-                    <div className="h-full w-full" style={{
-                      backgroundImage: "linear-gradient(rgba(30,58,138,0.3) 1px, transparent 1px), linear-gradient(90deg, rgba(30,58,138,0.3) 1px, transparent 1px)",
-                      backgroundSize: "24px 24px"
-                    }} />
-                  )}
-                  {book.id === "advanced-mathematics" && (
-                    <div className="h-full w-full" style={{
-                      backgroundImage: "radial-gradient(circle at 1px 1px, #7C3AED 1px, transparent 0)",
-                      backgroundSize: "16px 16px"
-                    }} />
-                  )}
-                </div>
-
                 <div className={`h-1.5 ${book.accent}`} />
-                <div className="relative p-6">
+                <div className="p-6">
                   <div className="flex items-center justify-between">
-                    <h3 className="text-xl font-bold text-primary">
-                      {book.title}
-                    </h3>
+                    <h3 className="text-xl font-bold text-primary">{book.title}</h3>
                     <span className={`rounded-full px-2.5 py-0.5 text-xs font-medium text-white ${book.accent}`}>
                       {book.chapters.length} chapters
                     </span>
                   </div>
-                  <p className="mt-1 text-sm font-medium text-text-muted">
-                    {book.gradeRange}
-                  </p>
-                  <p className="mt-3 text-sm leading-relaxed text-text-secondary">
-                    {book.shortDescription}
-                  </p>
+                  <p className="mt-1 text-sm font-medium text-text-muted">{book.gradeRange}</p>
+                  <p className="mt-3 text-sm leading-relaxed text-text-secondary">{book.shortDescription}</p>
                   <div className="mt-6 flex gap-3">
-                    <Link
-                      href="/sample-chapters"
-                      className="text-sm font-semibold text-discovery underline-offset-2 hover:underline"
-                    >
-                      View Sample
-                    </Link>
-                    <Link
-                      href="/contact#request-book"
-                      className="text-sm font-semibold text-discovery underline-offset-2 hover:underline"
-                    >
-                      Request Book
-                    </Link>
+                    <Link href="/sample-chapters" className="text-sm font-semibold text-discovery underline-offset-2 hover:underline">View Sample</Link>
+                    <Link href="/contact#request-book" className="text-sm font-semibold text-discovery underline-offset-2 hover:underline">Request Book</Link>
                   </div>
                 </div>
               </div>
@@ -235,70 +181,43 @@ export default function HomePage() {
         secondaryHref="/contact#request-book"
       />
 
-      {/* Blog Preview Section — category indicators */}
+      {/* Blog Preview Section */}
       <section className="bg-surface-raised py-16 sm:py-20">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="text-center">
-            <h2 className="text-3xl font-bold tracking-tight text-primary sm:text-4xl">
-              From Our Blog
-            </h2>
-            <p className="mx-auto mt-3 max-w-2xl text-lg text-text-secondary">
-              Ideas and insights on visual mathematics and understanding-first learning.
-            </p>
-          </div>
+          <h2 className="text-center text-2xl font-bold tracking-tight text-primary sm:text-3xl">
+            LATEST INSIGHTS
+          </h2>
           <div className="mt-10 grid gap-6 sm:grid-cols-3">
             {blogPosts.slice(0, 3).map((post, i) => {
               const colors = ["bg-discovery", "bg-insight", "bg-application"];
               const color = colors[i % colors.length];
               return (
-                <article
-                  key={post.slug}
-                  className="group rounded-xl border border-border bg-surface p-6 shadow-sm transition-all hover:shadow-md hover:-translate-y-1"
-                >
+                <article key={post.slug} className="group rounded-xl border border-border bg-surface p-6 shadow-sm transition-all hover:shadow-md hover:-translate-y-1">
                   <div className={`h-1 w-12 rounded-full ${color}`} />
-                  <time className="mt-3 block text-xs font-medium text-text-muted">
-                    {post.date}
-                  </time>
+                  <time className="mt-3 block text-xs font-medium text-text-muted">{post.date}</time>
                   <h3 className="mt-2 text-lg font-semibold text-primary group-hover:text-discovery transition-colors">
-                    <Link
-                      href={`/blog/${post.slug}`}
-                      className="underline-offset-2 hover:underline"
-                    >
-                      {post.title}
-                    </Link>
+                    <Link href={`/blog/${post.slug}`} className="underline-offset-2 hover:underline">{post.title}</Link>
                   </h3>
-                  <p className="mt-2 text-sm leading-relaxed text-text-secondary">
-                    {post.excerpt}
-                  </p>
-                  <Link
-                    href={`/blog/${post.slug}`}
-                    className="mt-4 inline-block text-sm font-semibold text-discovery underline-offset-2 hover:underline"
-                  >
-                    Read more →
-                  </Link>
+                  <p className="mt-2 text-sm leading-relaxed text-text-secondary">{post.excerpt}</p>
+                  <Link href={`/blog/${post.slug}`} className="mt-4 inline-block text-sm font-semibold text-discovery underline-offset-2 hover:underline">Read more →</Link>
                 </article>
               );
             })}
           </div>
           <div className="mt-8 text-center">
-            <Link
-              href="/blog"
-              className="inline-flex items-center justify-center rounded-lg border border-primary/20 bg-surface px-6 py-3 text-sm font-semibold text-primary shadow-sm transition-all hover:bg-surface-sunken hover:scale-[1.02]"
-            >
-              View All Articles
-            </Link>
+            <Link href="/blog" className="inline-flex items-center justify-center rounded-lg border border-primary/20 bg-surface px-6 py-3 text-sm font-semibold text-primary shadow-sm transition-all hover:bg-surface-sunken hover:scale-[1.02]">View All Articles</Link>
           </div>
         </div>
       </section>
 
       {/* Final CTA */}
       <SimpleCTA
-        title="Start Seeing Mathematics Differently"
-        description={siteConfig.tagline}
-        primaryLabel="View Sample Chapters"
-        primaryHref="/sample-chapters"
-        secondaryLabel="Explore Books"
-        secondaryHref="/books"
+        title="Ready to see mathematics differently?"
+        description="Start your journey with Ganitra today."
+        primaryLabel="Explore Books"
+        primaryHref="/books"
+        secondaryLabel="View Sample Chapters"
+        secondaryHref="/sample-chapters"
       />
     </>
   );

@@ -27,30 +27,8 @@ export default function BooksPage() {
             key={book.id}
             className="group relative overflow-hidden rounded-xl border border-border bg-surface shadow-sm transition-all hover:shadow-md hover:-translate-y-1"
           >
-            {/* Unique background per book */}
-            <div className="absolute inset-0 opacity-[0.04]">
-              {book.id === "foundations" && (
-                <div className="h-full w-full" style={{
-                  backgroundImage: "radial-gradient(circle at 2px 2px, #06B6D4 1px, transparent 0)",
-                  backgroundSize: "20px 20px"
-                }} />
-              )}
-              {book.id === "core-math" && (
-                <div className="h-full w-full" style={{
-                  backgroundImage: "linear-gradient(rgba(30,58,138,0.3) 1px, transparent 1px), linear-gradient(90deg, rgba(30,58,138,0.3) 1px, transparent 1px)",
-                  backgroundSize: "24px 24px"
-                }} />
-              )}
-              {book.id === "advanced-mathematics" && (
-                <div className="h-full w-full" style={{
-                  backgroundImage: "radial-gradient(circle at 1px 1px, #7C3AED 1px, transparent 0)",
-                  backgroundSize: "16px 16px"
-                }} />
-              )}
-            </div>
-
             <div className={`h-1.5 ${book.accent}`} />
-            <div className="relative p-6">
+            <div className="p-6">
               <div className="flex items-center justify-between">
                 <h2 className="text-xl font-bold text-primary">{book.title}</h2>
                 <span className={`rounded-full px-2.5 py-0.5 text-xs font-medium text-white ${book.accent}`}>

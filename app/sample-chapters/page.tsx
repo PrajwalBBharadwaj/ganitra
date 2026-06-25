@@ -38,21 +38,38 @@ export default function SampleChaptersPage() {
 
               {/* Learning header block */}
               <div className="mt-6 rounded-lg border border-border bg-surface-raised p-5">
-                <h3 className="text-lg font-semibold text-primary">
-                  {firstChapter.title}
-                </h3>
-                <p className="mt-1 text-sm text-text-secondary italic">
-                  {firstChapter.concept}
-                </p>
-                <div className="mt-4 flex flex-wrap gap-2">
-                  {firstChapter.sections.slice(0, 3).map((section, i) => (
-                    <span
-                      key={i}
-                      className={`rounded-full px-3 py-1 text-xs font-medium text-white ${book.accent}`}
-                    >
-                      {section.title || `Section ${i + 1}`}
+                <div className="flex flex-col gap-4 sm:flex-row sm:items-start">
+                  {/* Book cover placeholder */}
+                  <div className={`flex h-24 w-16 flex-shrink-0 items-center justify-center rounded-lg ${book.accent}`}>
+                    <span className="text-xs font-bold text-white text-center leading-tight">
+                      {book.title.split(" ").map(w => w[0]).join("").slice(0, 2)}
                     </span>
-                  ))}
+                  </div>
+
+                  <div className="flex-1">
+                    <h3 className="text-lg font-semibold text-primary">
+                      {firstChapter.title}
+                    </h3>
+                    <p className="mt-1 text-sm text-text-secondary italic">
+                      {firstChapter.concept}
+                    </p>
+
+                    <div className="mt-3 flex flex-wrap gap-2">
+                      {firstChapter.sections.slice(0, 3).map((section, i) => (
+                        <span
+                          key={i}
+                          className={`rounded-full px-3 py-1 text-xs font-medium text-white ${book.accent}`}
+                        >
+                          {section.title || `Section ${i + 1}`}
+                        </span>
+                      ))}
+                    </div>
+
+                    <div className="mt-3 flex items-center gap-4 text-xs text-text-muted">
+                      <span>📚 {firstChapter.sections.length} sections</span>
+                      <span>⏱ 20 min read</span>
+                    </div>
+                  </div>
                 </div>
               </div>
 
