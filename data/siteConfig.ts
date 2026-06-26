@@ -5,7 +5,7 @@
 export const siteConfig = {
   name: "Ganitra (working title)",
   displayName: "Ganitra",
-  tagline: "Mathematics becomes easy when you can see it.",
+  tagline: "Math becomes easy when you can see it.",
   missionStatement:
     "To help students see mathematics clearly and intuitively through visual understanding, structured thinking, and conceptual clarity.",
   origin: "Derived from Ganita, the Sanskrit word for Mathematics.",

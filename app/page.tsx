@@ -11,7 +11,7 @@ export default function HomePage() {
     <>
       <Hero />
 
-      {/* Problem Section — 3 cards with arrows */}
+      {/* Problem Section — 3 cards with icons, stronger typography */}
       <section className="bg-surface py-16 sm:py-20">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <h2 className="text-center text-2xl font-bold tracking-tight text-primary sm:text-3xl">
@@ -20,9 +20,16 @@ export default function HomePage() {
 
           <div className="mt-10 grid gap-6 lg:grid-cols-3">
             {/* Traditional Math */}
-            <div className="rounded-xl border border-border bg-orange-50/50 p-6 text-center">
-              <h3 className="text-lg font-semibold text-primary">Traditional Math</h3>
-              <ul className="mt-4 space-y-2 text-sm text-text-secondary">
+            <div className="rounded-xl border border-border bg-orange-50/50 p-8 text-center">
+              <div className="flex justify-center">
+                <svg width="32" height="32" viewBox="0 0 48 48" fill="none" className="text-curiosity">
+                  <rect x="8" y="8" width="32" height="32" rx="4" stroke="currentColor" strokeWidth="1.5" strokeOpacity="0.6" />
+                  <line x1="16" y1="20" x2="32" y2="20" stroke="currentColor" strokeWidth="1.5" strokeOpacity="0.4" />
+                  <line x1="16" y1="28" x2="28" y2="28" stroke="currentColor" strokeWidth="1.5" strokeOpacity="0.4" />
+                </svg>
+              </div>
+              <h3 className="mt-4 text-xl font-bold text-primary">Traditional Math</h3>
+              <ul className="mt-4 space-y-3 text-base text-text-secondary">
                 <li>• Memorization</li>
                 <li>• Formulas First</li>
                 <li>• Abstract</li>
@@ -31,9 +38,15 @@ export default function HomePage() {
             </div>
 
             {/* Leads To */}
-            <div className="rounded-xl border border-border bg-surface-raised p-6 text-center">
-              <h3 className="text-lg font-semibold text-primary">Leads To</h3>
-              <ul className="mt-4 space-y-2 text-sm text-text-secondary">
+            <div className="rounded-xl border border-border bg-surface-raised p-8 text-center">
+              <div className="flex justify-center">
+                <svg width="32" height="32" viewBox="0 0 48 48" fill="none" className="text-curiosity">
+                  <circle cx="24" cy="24" r="16" stroke="currentColor" strokeWidth="1.5" strokeOpacity="0.6" />
+                  <path d="M24 16v8l6 6" stroke="currentColor" strokeWidth="1.5" strokeOpacity="0.4" strokeLinecap="round" />
+                </svg>
+              </div>
+              <h3 className="mt-4 text-xl font-bold text-primary">Leads To</h3>
+              <ul className="mt-4 space-y-3 text-base text-text-secondary">
                 <li>• Confusion</li>
                 <li>• Fear of Math</li>
                 <li>• Temporary Learning</li>
@@ -42,9 +55,16 @@ export default function HomePage() {
             </div>
 
             {/* Ganitra Approach */}
-            <div className="rounded-xl border border-discovery/20 bg-discovery/5 p-6 text-center">
-              <h3 className="text-lg font-semibold text-primary">Ganitra Approach</h3>
-              <ul className="mt-4 space-y-2 text-sm text-text-secondary">
+            <div className="rounded-xl border border-discovery/20 bg-discovery/5 p-8 text-center">
+              <div className="flex justify-center">
+                <svg width="32" height="32" viewBox="0 0 48 48" fill="none" className="text-discovery">
+                  <ellipse cx="24" cy="24" rx="16" ry="10" stroke="currentColor" strokeWidth="1.5" strokeOpacity="0.8" />
+                  <circle cx="24" cy="24" r="6" stroke="currentColor" strokeWidth="1" strokeOpacity="0.5" />
+                  <circle cx="24" cy="24" r="2.5" fill="currentColor" fillOpacity="0.6" />
+                </svg>
+              </div>
+              <h3 className="mt-4 text-xl font-bold text-primary">Ganitra Approach</h3>
+              <ul className="mt-4 space-y-3 text-base text-text-secondary">
                 <li>• Visual Understanding</li>
                 <li>• Intuition First</li>
                 <li>• Connections</li>
