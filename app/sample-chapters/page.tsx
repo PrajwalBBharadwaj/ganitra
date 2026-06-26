@@ -12,7 +12,7 @@ export default function SampleChaptersPage() {
   return (
     <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
       <div className="text-center">
-        <h1 className="text-4xl font-bold tracking-tight text-primary sm:text-5xl">
+        <h1 className="scroll-mt-24 text-4xl font-bold tracking-tight text-primary sm:text-5xl">
           Sample Chapters
         </h1>
         <p className="mt-4 text-lg text-text-secondary">
@@ -27,7 +27,7 @@ export default function SampleChaptersPage() {
           if (!firstChapter) return null;
 
           return (
-            <section key={book.id} className="rounded-xl border border-border bg-surface p-6 sm:p-8 shadow-sm">
+            <section key={book.id} className="scroll-mt-24 rounded-xl border border-border bg-surface p-6 sm:p-8 shadow-sm">
               <div className={`h-1.5 w-20 rounded-full ${book.accent}`} />
               <h2 className="mt-4 text-2xl font-bold text-primary">
                 {book.title}

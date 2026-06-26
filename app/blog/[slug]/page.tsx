@@ -35,7 +35,7 @@ export default async function BlogArticlePage({ params }: Props) {
   if (!post) {
     return (
       <div className="mx-auto max-w-3xl px-4 py-12 sm:px-6 lg:px-8">
-        <h1 className="text-3xl font-bold text-primary">Post Not Found</h1>
+        <h1 className="scroll-mt-24 text-3xl font-bold text-primary">Post Not Found</h1>
         <p className="mt-4 text-text-secondary">
           The article you're looking for doesn't exist.
         </p>
@@ -60,7 +60,7 @@ export default async function BlogArticlePage({ params }: Props) {
 
       <header className="mt-6">
         <time className="text-sm font-medium text-text-muted">{post.date}</time>
-        <h1 className="mt-2 text-3xl font-bold tracking-tight text-primary sm:text-4xl">
+        <h1 className="scroll-mt-24 mt-2 text-3xl font-bold tracking-tight text-primary sm:text-4xl">
           {post.title}
         </h1>
         <p className="mt-3 text-lg text-text-secondary">{post.excerpt}</p>

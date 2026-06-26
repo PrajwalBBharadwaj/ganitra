@@ -6,15 +6,10 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   title: {
-    default: siteConfig.defaultTitle,
+    default: siteConfig.displayName,
     template: `%s | ${siteConfig.displayName}`,
   },
-  description: siteConfig.defaultDescription,
-  openGraph: {
-    title: siteConfig.defaultTitle,
-    description: siteConfig.defaultDescription,
-    siteName: siteConfig.displayName,
-  },
+  description: siteConfig.tagline,
 };
 
 export default function RootLayout({
@@ -23,10 +18,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className="flex min-h-screen flex-col">
+    <html lang="en" data-scroll-behavior="smooth">
+      <body className="min-h-screen">
         <Header />
-        <main className="flex-1">{children}</main>
+        <div className="pt-[80px]">
+          {children}
+        </div>
         <Footer />
       </body>
     </html>
