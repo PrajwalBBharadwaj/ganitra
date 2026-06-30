@@ -5,12 +5,12 @@ export function Mission() {
   return (
     <section className="relative overflow-hidden bg-[#EAF6F8] py-16 sm:py-20">
       {/* Left blueprint graphic — larger, more visible, edge-aligned, higher opacity */}
-      <div className="absolute -left-16 top-1/2 hidden -translate-y-1/2 opacity-[0.24] lg:block lg:h-[600px] xl:h-[700px]">
+      <div className="absolute -left-16 top-1/2 hidden -translate-y-1/2 opacity-[0.5] lg:block lg:h-[600px] xl:h-[600px]">
         <BlueprintCircle className="h-full w-auto" />
       </div>
 
       {/* Right blueprint graphic — larger, more visible, edge-aligned, higher opacity */}
-      <div className="absolute -right-16 top-1/2 hidden -translate-y-1/2 opacity-[0.24] lg:block lg:h-[600px] xl:h-[700px]">
+      <div className="absolute -right-16 top-1/2 hidden -translate-y-1/2 opacity-[0.5] lg:block lg:h-[600px] xl:h-[660px]">
         <BlueprintTriangle className="h-full w-auto" />
       </div>
 

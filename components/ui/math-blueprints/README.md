@@ -1,6 +1,6 @@
-# Mathematical Blueprint Graphics Library
+# Mathematical Blueprint Graphics Library V2
 
-A reusable SVG component library for Ganitra's mathematical visual identity. These components create educational, geometric graphics that resemble Euclidean geometry notebooks, compass-and-ruler constructions, and engineering blueprints.
+A comprehensive reusable SVG component library for Ganitra's mathematical visual identity. This library represents the entire mathematical ecosystem—from arithmetic to algebra, geometry to logic, patterns to functions.
 
 ## Installation
 
@@ -8,22 +8,60 @@ All components are exported from the index file:
 
 ```tsx
 import {
+  // Grid & Axis
   CoordinateGrid,
   CartesianAxes,
   DotMatrix,
+  
+  // Geometric Construction
   CompassConstruction,
   EuclideanConstruction,
   CircleConstruction,
   TriangleConstruction,
   PolygonConstruction,
+  
+  // Advanced Mathematics
   GoldenRectangle,
   GoldenSpiral,
-  NodeNetwork,
   FunctionGraph,
+  NumberSpiral,
+  ParabolaGraph,
+  ExponentialGraph,
+  LogarithmicGraph,
+  
+  // Networks & Logic
+  NodeNetwork,
+  BinaryTree,
+  VennDiagram,
+  
+  // Blueprint Components
   BlueprintCircle,
   BlueprintTriangle,
   BlueprintMesh,
-  NumberSpiral,
+  
+  // Numbers & Arithmetic
+  NumberRibbon,
+  ArithmeticPattern,
+  PrimePattern,
+  FibonacciPattern,
+  MultiplicationGrid,
+  NumberLine,
+  
+  // Algebra
+  EquationCloud,
+  SymbolField,
+  MatrixPattern,
+  
+  // Mathematical Patterns
+  PascalTriangle,
+  MagicSquare,
+  HexagonalPattern,
+  
+  // Mathematical Objects
+  FractionCircles,
+  IsometricCubes,
+  BalanceScale,
+  CoordinatePlane,
 } from '@/components/ui/math-blueprints';
 ```
 
@@ -32,7 +70,7 @@ import {
 ### Grid & Axis Components
 
 #### CoordinateGrid
-A flexible coordinate grid with customizable spacing, axes, and tick marks.
+Flexible coordinate grid with customizable spacing, axes, and tick marks.
 
 ```tsx
 <CoordinateGrid
@@ -43,21 +81,8 @@ A flexible coordinate grid with customizable spacing, axes, and tick marks.
   gridSize={50}
   showAxes={true}
   showTicks={true}
-  className="absolute inset-0"
 />
 ```
-
-**Props:**
-- `width`, `height`: Dimensions (number or string)
-- `strokeColor`: Grid line color
-- `opacity`: Overall opacity (0-1)
-- `rotation`: Rotation in degrees
-- `scale`: Scale factor
-- `className`: Additional CSS classes
-- `gridSize`: Spacing between grid lines
-- `showAxes`: Show center axes
-- `showTicks`: Show tick marks
-- `axisColor`, `gridColor`: Separate colors for axes and grid
 
 #### CartesianAxes
 Clean Cartesian coordinate axes with arrows and labels.
@@ -71,11 +96,6 @@ Clean Cartesian coordinate axes with arrows and labels.
 />
 ```
 
-**Props:**
-- `showArrows`: Show arrowheads at axis ends
-- `showLabels`: Show x, y, and O labels
-- `labelColor`: Color for axis labels
-
 #### DotMatrix
 Regular grid of dots for subtle background patterns.
 
@@ -87,11 +107,6 @@ Regular grid of dots for subtle background patterns.
   spacing={40}
 />
 ```
-
-**Props:**
-- `dotSize`: Radius of each dot
-- `spacing`: Distance between dots
-- `dotColor`: Color of dots
 
 ### Geometric Construction Components
 
@@ -108,13 +123,8 @@ Compass arcs radiating from a center point.
 />
 ```
 
-**Props:**
-- `arcCount`: Number of arcs to draw
-- `showArcs`: Toggle arc visibility
-- `showCenter`: Show center point
-
 #### EuclideanConstruction
-Classic Euclidean geometry construction with intersecting circles and triangle.
+Classic Euclidean geometry with intersecting circles and triangle.
 
 ```tsx
 <EuclideanConstruction
@@ -124,10 +134,6 @@ Classic Euclidean geometry construction with intersecting circles and triangle.
   showConstructionLines={true}
 />
 ```
-
-**Props:**
-- `showLabels`: Show vertex labels (A, B, C, O)
-- `showConstructionLines`: Show dashed construction lines
 
 #### CircleConstruction
 Concentric circles with intersection points and tangent lines.
@@ -142,11 +148,6 @@ Concentric circles with intersection points and tangent lines.
 />
 ```
 
-**Props:**
-- `circleCount`: Number of concentric circles
-- `showIntersections`: Show intersection points
-- `showCenter`: Show center point
-
 #### TriangleConstruction
 Triangle with altitudes, medians, and circumcircle.
 
@@ -159,11 +160,6 @@ Triangle with altitudes, medians, and circumcircle.
   showMedians={false}
 />
 ```
-
-**Props:**
-- `showLabels`: Show vertex labels (A, B, C)
-- `showAltitudes`: Show altitude lines
-- `showMedians`: Show median lines
 
 #### PolygonConstruction
 Regular polygon with configurable number of sides.
@@ -178,12 +174,6 @@ Regular polygon with configurable number of sides.
   showDiagonals={false}
 />
 ```
-
-**Props:**
-- `sides`: Number of sides (3+)
-- `radius`: Distance from center to vertices
-- `showLabels`: Show vertex labels (A, B, C, ...)
-- `showDiagonals`: Show diagonals from first vertex
 
 ### Advanced Mathematical Components
 
@@ -200,11 +190,6 @@ Golden ratio rectangle with spiral and nested squares.
 />
 ```
 
-**Props:**
-- `showSpiral`: Show golden spiral curve
-- `showSquares`: Show nested squares
-- `iterations`: Number of nested squares
-
 #### GoldenSpiral
 Pure golden spiral with construction arcs.
 
@@ -217,11 +202,6 @@ Pure golden spiral with construction arcs.
   showGoldenRatio={true}
 />
 ```
-
-**Props:**
-- `turns`: Number of spiral turns
-- `showCenter`: Show center point
-- `showGoldenRatio`: Show golden ratio squares
 
 #### FunctionGraph
 Sine wave function visualization.
@@ -238,12 +218,43 @@ Sine wave function visualization.
 />
 ```
 
-**Props:**
-- `amplitude`: Wave amplitude
-- `frequency`: Number of wave cycles
-- `phase`: Phase offset
-- `showGrid`: Show background grid
-- `showAxes`: Show coordinate axes
+#### ParabolaGraph
+Parabolic curve y = ax².
+
+```tsx
+<ParabolaGraph
+  strokeColor="#10B981"
+  opacity={0.3}
+  showAxes={true}
+  showVertex={true}
+  a={0.01}
+/>
+```
+
+#### ExponentialGraph
+Exponential curve y = b^x.
+
+```tsx
+<ExponentialGraph
+  strokeColor="#10B981"
+  opacity={0.3}
+  base={2}
+  showAxes={true}
+  showAsymptote={true}
+/>
+```
+
+#### LogarithmicGraph
+Logarithmic curve y = log_b(x).
+
+```tsx
+<LogarithmicGraph
+  strokeColor="#10B981"
+  opacity={0.3}
+  base={10}
+  showAxes={true}
+/>
+```
 
 #### NumberSpiral
 Archimedean spiral with numbered points.
@@ -256,11 +267,6 @@ Archimedean spiral with numbered points.
   showLabels={false}
 />
 ```
-
-**Props:**
-- `maxNumber`: Maximum number to plot
-- `showLabels`: Show number labels at key points
-- `labelColor`: Color for number labels
 
 ### Network & Graph Components
 
@@ -277,10 +283,29 @@ Network graph with nodes and connections.
 />
 ```
 
-**Props:**
-- `nodeCount`: Number of nodes
-- `connectionDistance`: Max distance for connections
-- `showLabels`: Show node labels (A, B, C, ...)
+#### BinaryTree
+Binary tree structure for computer science concepts.
+
+```tsx
+<BinaryTree
+  strokeColor="#06B6D4"
+  opacity={0.25}
+  depth={3}
+  showLabels={false}
+/>
+```
+
+#### VennDiagram
+Set theory visualization (2 or 3 circles).
+
+```tsx
+<VennDiagram
+  strokeColor="#06B6D4"
+  opacity={0.25}
+  circleCount={2} // or 3
+  showLabels={true}
+/>
+```
 
 ### Blueprint Components
 
@@ -300,12 +325,6 @@ Complex circle construction with squares, diagonals, and compass marks.
 />
 ```
 
-**Props:**
-- `showSquare`: Show square construction
-- `showDiagonals`: Show diagonal lines
-- `showCompassMarks`: Show compass point marks
-- `circleCount`: Number of concentric circles
-
 #### BlueprintTriangle
 Detailed triangle with construction circles, arcs, and marks.
 
@@ -318,11 +337,6 @@ Detailed triangle with construction circles, arcs, and marks.
   showConstructionMarks={true}
 />
 ```
-
-**Props:**
-- `showArcs`: Show compass arcs
-- `showDiagonals`: Show diagonal construction lines
-- `showConstructionMarks`: Show vertex and intersection marks
 
 #### BlueprintMesh
 Geometric mesh grid with nodes and connections.
@@ -337,10 +351,214 @@ Geometric mesh grid with nodes and connections.
 />
 ```
 
-**Props:**
-- `gridSize`: Spacing between grid points
-- `showNodes`: Show node points
-- `showConnections`: Show connection lines
+### Numbers & Arithmetic Components
+
+#### NumberRibbon
+Columns of beautiful numbers (e.g., Fibonacci sequence).
+
+```tsx
+<NumberRibbon
+  numbers={[2, 5, 8, 13, 21, 34, 55, 89]}
+  strokeColor="#06B6D4"
+  opacity={0.25}
+  columns={2}
+  showLabels={true}
+/>
+```
+
+#### ArithmeticPattern
+Scattered arithmetic expressions.
+
+```tsx
+<ArithmeticPattern
+  expressions={[
+    '8 × 7 = 56',
+    '15 + 18 = 33',
+    '64 ÷ 8 = 8',
+    '9² = 81'
+  ]}
+  strokeColor="#06B6D4"
+  opacity={0.2}
+/>
+```
+
+#### PrimePattern
+Prime numbers arranged artistically in a circle.
+
+```tsx
+<PrimePattern
+  strokeColor="#7C3AED"
+  opacity={0.25}
+  maxPrime={31}
+  showLabels={true}
+/>
+```
+
+#### FibonacciPattern
+Fibonacci sequence with spiral visualization.
+
+```tsx
+<FibonacciPattern
+  strokeColor="#06B6D4"
+  opacity={0.25}
+  iterations={8}
+  showSpiral={true}
+  showSequence={true}
+/>
+```
+
+#### MultiplicationGrid
+Scattered multiplication facts.
+
+```tsx
+<MultiplicationGrid
+  strokeColor="#06B6D4"
+  opacity={0.2}
+  showProducts={true}
+/>
+```
+
+#### NumberLine
+Number line with ticks and labels.
+
+```tsx
+<NumberLine
+  strokeColor="#06B6D4"
+  opacity={0.3}
+  min={-10}
+  max={10}
+  showLabels={true}
+  showTicks={true}
+/>
+```
+
+### Algebra Components
+
+#### EquationCloud
+Scattered mathematical equations and symbols.
+
+```tsx
+<EquationCloud
+  equations={[
+    'x² + y² = r²',
+    'a² + b² = c²',
+    'y = mx + c',
+    'f(x)',
+    'Σ', 'π', '√', '∞', '∫'
+  ]}
+  strokeColor="#7C3AED"
+  opacity={0.2}
+/>
+```
+
+#### SymbolField
+Floating mathematical symbols with connecting network.
+
+```tsx
+<SymbolField
+  symbols={['π', 'Σ', '∫', '√', '≈', '≤', '≥', '∞', 'Δ', 'α', 'β', 'θ']}
+  strokeColor="#7C3AED"
+  opacity={0.2}
+/>
+```
+
+#### MatrixPattern
+Small matrix with brackets and values.
+
+```tsx
+<MatrixPattern
+  strokeColor="#7C3AED"
+  opacity={0.2}
+  matrixSize={3}
+  showBrackets={true}
+/>
+```
+
+### Mathematical Patterns Components
+
+#### PascalTriangle
+Pascal's triangle with binomial coefficients.
+
+```tsx
+<PascalTriangle
+  strokeColor="#7C3AED"
+  opacity={0.25}
+  rows={8}
+  showNumbers={true}
+/>
+```
+
+#### MagicSquare
+Magic square grid (3x3 classic).
+
+```tsx
+<MagicSquare
+  strokeColor="#7C3AED"
+  opacity={0.25}
+  size={3}
+  showSum={true}
+/>
+```
+
+#### HexagonalPattern
+Hexagonal grid pattern.
+
+```tsx
+<HexagonalPattern
+  strokeColor="#7C3AED"
+  opacity={0.2}
+  showDots={true}
+  showConnections={true}
+/>
+```
+
+### Mathematical Objects Components
+
+#### FractionCircles
+Pie chart circles showing fractions.
+
+```tsx
+<FractionCircles
+  strokeColor="#06B6D4"
+  opacity={0.25}
+  showFractions={true}
+/>
+```
+
+#### IsometricCubes
+Isometric cube projections.
+
+```tsx
+<IsometricCubes
+  strokeColor="#06B6D4"
+  opacity={0.25}
+  cubeCount={5}
+/>
+```
+
+#### BalanceScale
+Balance scale for equation visualization.
+
+```tsx
+<BalanceScale
+  strokeColor="#06B6D4"
+  opacity={0.25}
+  showEquation={true}
+/>
+```
+
+#### CoordinatePlane
+Full coordinate plane with grid and sample points.
+
+```tsx
+<CoordinatePlane
+  strokeColor="#06B6D4"
+  opacity={0.3}
+  showGrid={true}
+  showAxes={true}
+  showPoints={true}
+/>
+```
 
 ## Common Props
 
@@ -358,16 +576,14 @@ All components accept these standard props:
 
 ## Usage Examples
 
-### Background Pattern
+### Layered Background (Hero Section)
 ```tsx
 <div className="relative">
-  <CoordinateGrid
-    className="absolute inset-0 h-full w-full"
-    opacity={0.1}
-    gridSize={40}
-  />
+  <CoordinateGrid className="absolute inset-0" opacity={0.1} />
+  <BlueprintCircle className="absolute -right-16 opacity-20" />
+  <EquationCloud className="absolute inset-0 opacity-15" />
   <div className="relative z-10">
-    {/* Content here */}
+    {/* Hero content */}
   </div>
 </div>
 ```
@@ -375,33 +591,21 @@ All components accept these standard props:
 ### Section Accent
 ```tsx
 <section className="relative overflow-hidden py-16">
-  <div className="absolute -right-16 top-1/2 hidden -translate-y-1/2 opacity-[0.24] lg:block lg:h-[600px]">
-    <BlueprintCircle className="h-full w-auto" />
+  <div className="absolute -left-16 top-1/2 hidden -translate-y-1/2 opacity-[0.24] lg:block">
+    <FibonacciPattern strokeColor="#06B6D4" className="h-[600px] w-auto" />
   </div>
   {/* Section content */}
 </section>
 ```
 
-### Card Background
+### Card Background Pattern
 ```tsx
 <Card>
-  <DotMatrix
-    className="absolute inset-0 h-full w-full"
-    dotColor="#7C3AED"
-    opacity={0.1}
-    spacing={30}
-  />
+  <DotMatrix className="absolute inset-0" dotColor="#7C3AED" opacity={0.1} spacing={30} />
   <CardContent>
     {/* Card content */}
   </CardContent>
 </Card>
-```
-
-### Hero Visual
-```tsx
-<div className="hidden lg:block lg:w-3/5">
-  <HeroIllustration className="h-full w-full" />
-</div>
 ```
 
 ## Design Principles
@@ -412,13 +616,14 @@ All components accept these standard props:
 4. **Clean vector lines**: Consistent stroke widths and geometric precision
 5. **Reusable props**: Same component works in multiple contexts
 6. **No raster images**: All graphics are inline SVG
+7. **Comprehensive coverage**: Represents all branches of mathematics
 
 ## Color Usage
 
 Follow the Ganitra design system:
 
-- **Discovery (Cyan)**: `#06B6D4` - Visual learning, grids, axes
-- **Insight (Violet)**: `#7C3AED` - Understanding, networks, meshes
+- **Discovery (Cyan)**: `#06B6D4` - Visual learning, grids, axes, numbers
+- **Insight (Violet)**: `#7C3AED` - Understanding, algebra, patterns
 - **Application (Amber)**: `#F59E0B` - Golden ratio, spirals
 - **Success (Emerald)**: `#10B981` - Function graphs, curves
 
@@ -459,3 +664,20 @@ When adding new components:
 5. Document in this README
 6. Follow the blueprint aesthetic
 7. Make it educational, not decorative
+8. Represent a specific branch of mathematics
+
+## Component Count
+
+**Total: 35 components**
+
+- Grid & Axis: 3 components
+- Geometric Construction: 5 components
+- Advanced Mathematics: 7 components
+- Network & Graph: 3 components
+- Blueprint: 3 components
+- Numbers & Arithmetic: 6 components
+- Algebra: 3 components
+- Mathematical Patterns: 3 components
+- Mathematical Objects: 4 components
+
+This library now represents the full spectrum of mathematics, making Ganitra's visual identity truly comprehensive and distinctive.
