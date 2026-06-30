@@ -5,14 +5,25 @@ import { blogPosts } from "@/data/blog";
 import { Hero } from "@/components/sections/Hero";
 import { Mission } from "@/components/sections/Mission";
 import { SimpleCTA } from "@/components/sections/SimpleCTA";
-import { DotMatrix, IntersectingCircles, TriangleConstruction, GeometricMesh } from "@/components/ui/MathGraphics";
+import {
+  DotMatrix,
+  IntersectingCircles,
+  TriangleConstruction,
+  GeometricMesh,
+  BookIcon,
+  SadFaceIcon,
+  EyeIcon,
+  BlueprintCircle,
+  BlueprintTriangle,
+  BlueprintNodes,
+} from "@/components/ui/MathGraphics";
 
 export default function HomePage() {
   return (
     <>
       <Hero />
 
-      {/* Problem Section — 3 cards with icons, stronger typography, mathematical graphics, flow arrows */}
+      {/* Problem Section — 3 cards with Lucide-style icons, arrows, mathematical graphics */}
       <section className="bg-surface py-16 sm:py-20">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <h2 className="scroll-mt-24 text-center text-2xl font-bold tracking-tight text-primary sm:text-3xl">
@@ -21,24 +32,18 @@ export default function HomePage() {
 
           <div className="mt-10 flex flex-col gap-6 lg:flex-row lg:items-center">
             {/* Traditional Math */}
-            <div className="group relative overflow-hidden rounded-xl border border-border bg-orange-50/50 p-8 text-center transition-all hover:shadow-md lg:flex-1">
-              {/* Background graphic — scattered dots */}
-              <div className="absolute inset-0 opacity-[0.06]">
+            <div className="group relative overflow-hidden rounded-2xl border border-border bg-orange-50/50 p-8 text-center shadow-sm transition-all hover:shadow-md lg:flex-1">
+              {/* Background graphic — fragmented nodes */}
+              <div className="absolute inset-0 opacity-[0.05]">
                 <DotMatrix className="h-full w-full" />
               </div>
 
               <div className="relative">
-                <div className="flex justify-center">
-                  <svg width="40" height="40" viewBox="0 0 48 48" fill="none" className="text-curiosity">
-                    <rect x="8" y="8" width="32" height="32" rx="4" stroke="currentColor" strokeWidth="1.5" strokeOpacity="0.6" />
-                    <line x1="16" y1="20" x2="32" y2="20" stroke="currentColor" strokeWidth="1.5" strokeOpacity="0.4" />
-                    <line x1="16" y1="28" x2="28" y2="28" stroke="currentColor" strokeWidth="1.5" strokeOpacity="0.4" />
-                    <line x1="20" y1="12" x2="20" y2="16" stroke="currentColor" strokeWidth="1" strokeOpacity="0.3" />
-                    <line x1="28" y1="12" x2="28" y2="16" stroke="currentColor" strokeWidth="1" strokeOpacity="0.3" />
-                  </svg>
+                <div className="flex items-center justify-center gap-3">
+                  <BookIcon className="text-curiosity" />
+                  <h3 className="text-2xl font-bold text-primary">Traditional Math</h3>
                 </div>
-                <h3 className="mt-4 text-xl font-bold text-primary">Traditional Math</h3>
-                <ul className="mt-4 space-y-3 text-base text-text-secondary">
+                <ul className="mt-5 space-y-3 text-base leading-[1.7] text-text-secondary">
                   <li>• Memorization</li>
                   <li>• Formulas First</li>
                   <li>• Abstract</li>
@@ -49,31 +54,25 @@ export default function HomePage() {
 
             {/* Flow Arrow — desktop only */}
             <div className="hidden lg:flex items-center justify-center px-2">
-              <svg width="48" height="48" viewBox="0 0 48 48" fill="none" className="text-text-muted">
+              <svg width="40" height="40" viewBox="0 0 48 48" fill="none" className="text-text-muted">
                 <path d="M8 24h32" stroke="currentColor" strokeWidth="1.5" strokeOpacity="0.4" strokeDasharray="4 4" />
                 <path d="M32 16l8 8-8 8" stroke="currentColor" strokeWidth="1.5" strokeOpacity="0.5" strokeLinecap="round" strokeLinejoin="round" />
               </svg>
             </div>
 
             {/* Leads To */}
-            <div className="group relative overflow-hidden rounded-xl border border-border bg-surface-raised p-8 text-center transition-all hover:shadow-md lg:flex-1">
+            <div className="group relative overflow-hidden rounded-2xl border border-border bg-surface-raised p-8 text-center shadow-sm transition-all hover:shadow-md lg:flex-1">
               {/* Background graphic — fading connections */}
-              <div className="absolute inset-0 opacity-[0.05]">
+              <div className="absolute inset-0 opacity-[0.04]">
                 <IntersectingCircles className="h-full w-full" />
               </div>
 
               <div className="relative">
-                <div className="flex justify-center">
-                  <svg width="40" height="40" viewBox="0 0 48 48" fill="none" className="text-curiosity">
-                    <circle cx="24" cy="24" r="16" stroke="currentColor" strokeWidth="1.5" strokeOpacity="0.6" />
-                    <path d="M24 16v8l6 6" stroke="currentColor" strokeWidth="1.5" strokeOpacity="0.4" strokeLinecap="round" />
-                    <circle cx="24" cy="16" r="1.5" fill="currentColor" fillOpacity="0.4" />
-                    <circle cx="30" cy="24" r="1.5" fill="currentColor" fillOpacity="0.4" />
-                    <circle cx="36" cy="30" r="1.5" fill="currentColor" fillOpacity="0.3" />
-                  </svg>
+                <div className="flex items-center justify-center gap-3">
+                  <SadFaceIcon className="text-primary" />
+                  <h3 className="text-2xl font-bold text-primary">Leads To</h3>
                 </div>
-                <h3 className="mt-4 text-xl font-bold text-primary">Leads To</h3>
-                <ul className="mt-4 space-y-3 text-base text-text-secondary">
+                <ul className="mt-5 space-y-3 text-base leading-[1.7] text-text-secondary">
                   <li>• Confusion</li>
                   <li>• Fear of Math</li>
                   <li>• Temporary Learning</li>
@@ -84,31 +83,25 @@ export default function HomePage() {
 
             {/* Flow Arrow — desktop only */}
             <div className="hidden lg:flex items-center justify-center px-2">
-              <svg width="48" height="48" viewBox="0 0 48 48" fill="none" className="text-text-muted">
+              <svg width="40" height="40" viewBox="0 0 48 48" fill="none" className="text-text-muted">
                 <path d="M8 24h32" stroke="currentColor" strokeWidth="1.5" strokeOpacity="0.4" strokeDasharray="4 4" />
                 <path d="M32 16l8 8-8 8" stroke="currentColor" strokeWidth="1.5" strokeOpacity="0.5" strokeLinecap="round" strokeLinejoin="round" />
               </svg>
             </div>
 
             {/* Ganitra Approach */}
-            <div className="group relative overflow-hidden rounded-xl border border-discovery/20 bg-discovery/5 p-8 text-center transition-all hover:shadow-md lg:flex-1">
+            <div className="group relative overflow-hidden rounded-2xl border border-discovery/20 bg-discovery/5 p-8 text-center shadow-sm transition-all hover:shadow-md lg:flex-1">
               {/* Background graphic — clean geometric construction */}
-              <div className="absolute inset-0 opacity-[0.06]">
+              <div className="absolute inset-0 opacity-[0.05]">
                 <TriangleConstruction className="h-full w-full" />
               </div>
 
               <div className="relative">
-                <div className="flex justify-center">
-                  <svg width="40" height="40" viewBox="0 0 48 48" fill="none" className="text-discovery">
-                    <ellipse cx="24" cy="24" rx="16" ry="10" stroke="currentColor" strokeWidth="1.5" strokeOpacity="0.8" />
-                    <circle cx="24" cy="24" r="6" stroke="currentColor" strokeWidth="1" strokeOpacity="0.5" />
-                    <circle cx="24" cy="24" r="2.5" fill="currentColor" fillOpacity="0.6" />
-                    <line x1="8" y1="24" x2="16" y2="24" stroke="currentColor" strokeWidth="1" strokeOpacity="0.3" />
-                    <line x1="32" y1="24" x2="40" y2="24" stroke="currentColor" strokeWidth="1" strokeOpacity="0.3" />
-                  </svg>
+                <div className="flex items-center justify-center gap-3">
+                  <EyeIcon className="text-discovery" />
+                  <h3 className="text-2xl font-bold text-primary">Ganitra Approach</h3>
                 </div>
-                <h3 className="mt-4 text-xl font-bold text-primary">Ganitra Approach</h3>
-                <ul className="mt-4 space-y-3 text-base text-text-secondary">
+                <ul className="mt-5 space-y-3 text-base leading-[1.7] text-text-secondary">
                   <li>• Visual Understanding</li>
                   <li>• Intuition First</li>
                   <li>• Connections</li>
