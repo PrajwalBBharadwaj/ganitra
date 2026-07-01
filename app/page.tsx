@@ -5,10 +5,6 @@ import { blogPosts } from "@/data/blog";
 import { Hero } from "@/components/sections/Hero";
 import { Mission } from "@/components/sections/Mission";
 import { SimpleCTA } from "@/components/sections/SimpleCTA";
-import { MobileHero } from "@/components/sections/mobile/MobileHero";
-import { MobileProblem } from "@/components/sections/mobile/MobileProblem";
-import { MobileMethod } from "@/components/sections/mobile/MobileMethod";
-import { MobileBooks } from "@/components/sections/mobile/MobileBooks";
 import {
   DotMatrix,
   IntersectingCircles,
@@ -23,27 +19,18 @@ import {
 export default function HomePage() {
   return (
     <>
-      {/* Mobile Hero — immersive mathematical field */}
-      <MobileHero />
+      <Hero />
 
-      {/* Desktop Hero — original layout */}
-      <div className="hidden md:block">
-        <Hero />
-      </div>
-
-      {/* Mobile Problem — chaos field */}
-      <MobileProblem />
-
-      {/* Desktop Problem — original layout */}
-      <section className="hidden md:block bg-surface py-16 sm:py-20">
+      {/* Problem Section — 3 cards with visual hierarchy using accent system */}
+      <section className="bg-surface py-16 sm:py-20">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <h2 className="scroll-mt-24 text-center text-3xl font-bold tracking-tight text-primary sm:text-3xl">
+          <h2 className="scroll-mt-24 text-center text-2xl font-bold tracking-tight text-primary sm:text-3xl">
             THE PROBLEM
           </h2>
 
           <div className="mt-10 flex flex-col gap-6 lg:flex-row lg:items-center">
             {/* Traditional Math — neutral/muted (lowest weight) */}
-            <div className="group relative overflow-hidden rounded-3xl border border-border bg-surface-raised p-8 text-center shadow-sm transition-all duration-200 hover:shadow-md lg:flex-1">
+            <div className="group relative overflow-hidden rounded-2xl border border-border bg-surface-raised p-8 text-center shadow-sm transition-all duration-200 hover:shadow-md lg:flex-1">
               {/* Background graphic — fragmented nodes */}
               <div className="absolute inset-0 opacity-[0.04]">
                 <DotMatrix className="h-full w-full" />
@@ -140,14 +127,10 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Mission Section */}
       <Mission />
 
-      {/* Mobile Method — alignment field */}
-      <MobileMethod />
-
-      {/* Desktop Method — original layout */}
-      <section className="hidden md:block bg-surface-raised py-16 sm:py-20">
+      {/* Ganitra Method — 3 distinct gradient cards */}
+      <section className="bg-surface-raised py-16 sm:py-20">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <h2 className="scroll-mt-24 text-center text-2xl font-bold tracking-tight text-primary sm:text-3xl">
             THE GANITRA METHOD
@@ -227,11 +210,8 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Mobile Books — knowledge atlas */}
-      <MobileBooks />
-
-      {/* Desktop Books — original layout */}
-      <section className="hidden md:block bg-[#EAF6F8] py-16 sm:py-20">
+      {/* Books Preview Section */}
+      <section className="bg-[#EAF6F8] py-16 sm:py-20">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <h2 className="scroll-mt-24 text-center text-2xl font-bold tracking-tight text-primary sm:text-3xl">
             EXPLORE OUR BOOKS
