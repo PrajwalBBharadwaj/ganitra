@@ -10,8 +10,6 @@ import {
   IntersectingCircles,
   TriangleConstruction,
   GeometricMesh,
-  BookIcon,
-  SadFaceIcon,
   EyeIcon,
   BlueprintCircle,
   BlueprintTriangle,
@@ -23,7 +21,7 @@ export default function HomePage() {
     <>
       <Hero />
 
-      {/* Problem Section — 3 cards with Lucide-style icons, arrows, mathematical graphics */}
+      {/* Problem Section — 3 cards with visual hierarchy using accent system */}
       <section className="bg-surface py-16 sm:py-20">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <h2 className="scroll-mt-24 text-center text-2xl font-bold tracking-tight text-primary sm:text-3xl">
@@ -31,19 +29,26 @@ export default function HomePage() {
           </h2>
 
           <div className="mt-10 flex flex-col gap-6 lg:flex-row lg:items-center">
-            {/* Traditional Math */}
-            <div className="group relative overflow-hidden rounded-2xl border border-border bg-orange-50/50 p-8 text-center shadow-sm transition-all hover:shadow-md lg:flex-1">
+            {/* Traditional Math — neutral/muted (lowest weight) */}
+            <div className="group relative overflow-hidden rounded-2xl border border-border bg-surface-raised p-8 text-center shadow-sm transition-all duration-200 hover:shadow-md lg:flex-1">
               {/* Background graphic — fragmented nodes */}
-              <div className="absolute inset-0 opacity-[0.05]">
+              <div className="absolute inset-0 opacity-[0.04]">
                 <DotMatrix className="h-full w-full" />
               </div>
 
               <div className="relative">
                 <div className="flex items-center justify-center gap-3">
-                  <BookIcon className="text-curiosity" />
-                  <h3 className="text-2xl font-bold text-primary">Traditional Math</h3>
+                  <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-text-muted/10 text-text-muted">
+                    <svg width="28" height="28" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <circle cx="24" cy="24" r="18" stroke="currentColor" strokeWidth="1.5" strokeOpacity="0.5" />
+                      <line x1="24" y1="6" x2="24" y2="42" stroke="currentColor" strokeWidth="1" strokeOpacity="0.35" />
+                      <line x1="6" y1="24" x2="42" y2="24" stroke="currentColor" strokeWidth="1" strokeOpacity="0.35" />
+                      <circle cx="24" cy="24" r="3" fill="none" stroke="currentColor" strokeWidth="1" strokeOpacity="0.4" />
+                    </svg>
+                  </div>
+                  <h3 className="text-2xl font-bold text-text-secondary">Traditional Math</h3>
                 </div>
-                <ul className="mt-5 space-y-3 text-base leading-[1.7] text-text-secondary">
+                <ul className="mt-5 space-y-3 text-base leading-[1.7] text-text-muted">
                   <li>• Memorization</li>
                   <li>• Formulas First</li>
                   <li>• Abstract</li>
@@ -54,14 +59,14 @@ export default function HomePage() {
 
             {/* Flow Arrow — desktop only */}
             <div className="hidden lg:flex items-center justify-center px-2">
-              <svg width="40" height="40" viewBox="0 0 48 48" fill="none" className="text-text-muted">
-                <path d="M8 24h32" stroke="currentColor" strokeWidth="1.5" strokeOpacity="0.4" strokeDasharray="4 4" />
-                <path d="M32 16l8 8-8 8" stroke="currentColor" strokeWidth="1.5" strokeOpacity="0.5" strokeLinecap="round" strokeLinejoin="round" />
+              <svg width="48" height="48" viewBox="0 0 48 48" fill="none" className="text-text-muted">
+                <path d="M6 24h36" stroke="currentColor" strokeWidth="2" strokeOpacity="0.5" strokeDasharray="4 4" />
+                <path d="M34 14l10 10-10 10" stroke="currentColor" strokeWidth="2" strokeOpacity="0.6" strokeLinecap="round" strokeLinejoin="round" />
               </svg>
             </div>
 
-            {/* Leads To */}
-            <div className="group relative overflow-hidden rounded-2xl border border-border bg-surface-raised p-8 text-center shadow-sm transition-all hover:shadow-md lg:flex-1">
+            {/* Leads To — muted warm treatment (middle weight) */}
+            <div className="group relative overflow-hidden rounded-2xl border border-insight/20 bg-insight/5 p-8 text-center shadow-sm transition-all duration-200 hover:shadow-md lg:flex-1">
               {/* Background graphic — fading connections */}
               <div className="absolute inset-0 opacity-[0.04]">
                 <IntersectingCircles className="h-full w-full" />
@@ -69,7 +74,14 @@ export default function HomePage() {
 
               <div className="relative">
                 <div className="flex items-center justify-center gap-3">
-                  <SadFaceIcon className="text-primary" />
+                  <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-insight/15 text-insight">
+                    <svg width="28" height="28" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <circle cx="24" cy="24" r="16" stroke="currentColor" strokeWidth="1.5" strokeOpacity="0.5" />
+                      <circle cx="16" cy="20" r="2" fill="currentColor" fillOpacity="0.4" />
+                      <circle cx="32" cy="20" r="2" fill="currentColor" fillOpacity="0.4" />
+                      <path d="M16 32c2-3 6-4 10-0" stroke="currentColor" strokeWidth="1.5" strokeOpacity="0.4" strokeLinecap="round" />
+                    </svg>
+                  </div>
                   <h3 className="text-2xl font-bold text-primary">Leads To</h3>
                 </div>
                 <ul className="mt-5 space-y-3 text-base leading-[1.7] text-text-secondary">
@@ -83,22 +95,24 @@ export default function HomePage() {
 
             {/* Flow Arrow — desktop only */}
             <div className="hidden lg:flex items-center justify-center px-2">
-              <svg width="40" height="40" viewBox="0 0 48 48" fill="none" className="text-text-muted">
-                <path d="M8 24h32" stroke="currentColor" strokeWidth="1.5" strokeOpacity="0.4" strokeDasharray="4 4" />
-                <path d="M32 16l8 8-8 8" stroke="currentColor" strokeWidth="1.5" strokeOpacity="0.5" strokeLinecap="round" strokeLinejoin="round" />
+              <svg width="48" height="48" viewBox="0 0 48 48" fill="none" className="text-text-muted">
+                <path d="M6 24h36" stroke="currentColor" strokeWidth="2" strokeOpacity="0.5" strokeDasharray="4 4" />
+                <path d="M34 14l10 10-10 10" stroke="currentColor" strokeWidth="2" strokeOpacity="0.6" strokeLinecap="round" strokeLinejoin="round" />
               </svg>
             </div>
 
-            {/* Ganitra Approach */}
-            <div className="group relative overflow-hidden rounded-2xl border border-discovery/20 bg-discovery/5 p-8 text-center shadow-sm transition-all hover:shadow-md lg:flex-1">
+            {/* Ganitra Approach — strongest treatment (destination) */}
+            <div className="group relative overflow-hidden rounded-2xl border-2 border-discovery/30 bg-gradient-to-br from-discovery/15 to-discovery/5 p-8 text-center shadow-md transition-all duration-200 hover:shadow-lg lg:flex-1">
               {/* Background graphic — clean geometric construction */}
-              <div className="absolute inset-0 opacity-[0.05]">
+              <div className="absolute inset-0 opacity-[0.06]">
                 <TriangleConstruction className="h-full w-full" />
               </div>
 
               <div className="relative">
                 <div className="flex items-center justify-center gap-3">
-                  <EyeIcon className="text-discovery" />
+                  <div className="flex h-14 w-14 items-center justify-center rounded-xl bg-discovery/25 text-discovery shadow-sm">
+                    <EyeIcon className="h-7 w-7" />
+                  </div>
                   <h3 className="text-2xl font-bold text-primary">Ganitra Approach</h3>
                 </div>
                 <ul className="mt-5 space-y-3 text-base leading-[1.7] text-text-secondary">
@@ -212,7 +226,7 @@ export default function HomePage() {
                 <div className="p-6">
                   <div className="flex items-center justify-between">
                     <h3 className="text-xl font-bold text-primary">{book.title}</h3>
-                    <span className={`rounded-full px-2.5 py-0.5 text-xs font-medium text-white ${book.accent}`}>
+                    <span className={`rounded-full px-2.5 py-0.5 text-xs font-semibold text-primary-dark ${book.accent}`}>
                       {book.chapters.length} chapters
                     </span>
                   </div>

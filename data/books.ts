@@ -38,7 +38,7 @@ export const books: Book[] = [
       "Numbers, arithmetic, and patterns — building a strong mathematical foundation.",
     level: "Foundations",
     gradeRange: "Grades 1–4",
-    accent: "bg-accent-numbers",
+    accent: "bg-discovery",
     samplePdfUrl: "/assets/Math%20You%20Can%20See%20-%20Sample%20Chapter.pdf",
     chapters: [
       {
@@ -93,7 +93,7 @@ export const books: Book[] = [
       "Fractions, algebra introduction, and geometry — connecting concepts.",
     level: "Core",
     gradeRange: "Grades 5–7",
-    accent: "bg-accent-algebra",
+    accent: "bg-insight",
     chapters: [
       {
         id: "core-ch1",
@@ -147,7 +147,7 @@ export const books: Book[] = [
       "Algebra, trigonometry, reasoning, and problem solving — mastering mathematical thinking.",
     level: "Advanced",
     gradeRange: "Grades 8–10",
-    accent: "bg-accent-logic",
+    accent: "bg-application",
     chapters: [
       {
         id: "advanced-ch1",
