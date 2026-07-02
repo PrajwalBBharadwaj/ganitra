@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect, useMemo } from 'react';
+import React, { useState, useEffect } from 'react';
 
 export interface MathematicalNetworkProps {
   width?: number | string;
@@ -18,7 +18,6 @@ type Node = {
   y: number;
   pulseOffset: number;
   isAccent: boolean;
-  cluster: number;
 };
 
 type Connection = {
@@ -33,8 +32,13 @@ type Symbol = {
   x: number;
   y: number;
   char: string;
-  cluster: number;
 };
+
+// Seeded random number generator for deterministic rendering
+function seededRandom(seed: number): number {
+  const x = Math.sin(seed * 9301 + 49297) * 233280;
+  return x - Math.floor(x);
+}
 
 export function MathematicalNetwork({
   width = '100%',
@@ -46,108 +50,141 @@ export function MathematicalNetwork({
   nodeCount = 120,
   symbolCount = 15,
 }: MathematicalNetworkProps) {
+  const [nodes, setNodes] = useState<Node[]>([]);
+  const [connections, setConnections] = useState<Connection[]>([]);
+  const [symbols, setSymbols] = useState<Symbol[]>([]);
+  const [time, setTime] = useState(0);
+  
   const viewBoxSize = 1000;
+  const mathSymbols = ['π', 'Σ', '∫', '√', '≈', '≤', '≥', '∞', 'Δ', 'α', 'β', 'θ', 'λ', 'μ', 'σ', '∂', '∇', '∈', '∉', '⊂'];
 
-  const mathSymbols = useMemo(
-    () => ['π', 'Σ', '∫', '√', '≈', '≤', '≥', '∞', 'Δ', 'α', 'β', 'θ', 'λ', 'μ', 'σ', '∂', '∇', '∈', '∉', '⊂'],
-    []
-  );
+  // Generate deterministic data on mount
+  useEffect(() => {
+    const generatedNodes: Node[] = [];
+    const generatedConnections: Connection[] = [];
+    const generatedSymbols: Symbol[] = [];
+  
+    // --- DENSER NODE FIELD ---
+    const adjustedNodeCount = Math.floor(nodeCount * 1.4);
+  
+    const minDist = 55; // key parameter: spreads local clustering
 
-  /**
-   * Divide space into 3 conceptual clusters:
-   * 0 = Algebra (left)
-   * 1 = Geometry (center)
-   * 2 = Calculus / Insight (right)
-   */
-  const generateNodes = useMemo<Node[]>(() => {
-    const nodes: Node[] = [];
-
-    for (let i = 0; i < nodeCount; i++) {
-      const cluster = i % 3;
-
-      const baseX =
-        cluster === 0 ? Math.random() * 350 :
-        cluster === 1 ? 250 + Math.random() * 500 :
-        650 + Math.random() * 350;
-
-      const x = baseX;
-      const y = Math.random() * viewBoxSize;
-
-      nodes.push({
+    for (let i = 0; i < adjustedNodeCount; i++) {
+      let x = 0;
+      let y = 0;
+    
+      let attempts = 0;
+      let valid = false;
+    
+      while (!valid && attempts < 10) {
+        const r1 = seededRandom(i * 17 + attempts * 11 + 1);
+        const r2 = seededRandom(i * 17 + attempts * 11 + 2);
+        const r3 = seededRandom(i * 17 + 3);
+    
+        x = r1 * viewBoxSize;
+        y = r2 * viewBoxSize;
+    
+        valid = true;
+    
+        // check spacing vs existing nodes
+        for (let j = 0; j < generatedNodes.length; j++) {
+          const dx = x - generatedNodes[j].x;
+          const dy = y - generatedNodes[j].y;
+          const dist = Math.sqrt(dx * dx + dy * dy);
+    
+          if (dist < minDist) {
+            valid = false;
+            break;
+          }
+        }
+    
+        attempts++;
+      }
+    
+      generatedNodes.push({
         x,
         y,
-        cluster,
-        pulseOffset: (i * 0.37) % (Math.PI * 2),
-        isAccent: cluster === 2 && i % 7 === 0,
+        pulseOffset: seededRandom(i * 999) * Math.PI * 2,
+        isAccent: seededRandom(i * 77) < 0.08,
       });
     }
-
-    return nodes;
-  }, [nodeCount]);
-
-  /**
-   * Stable connections: only local + structured links
-   * No randomness in render phase
-   */
-  const generateConnections = useMemo<Connection[]>(() => {
-    const connections: Connection[] = [];
-    const maxDistance = 140;
-
-    for (let i = 0; i < generateNodes.length; i++) {
-      for (let j = i + 1; j < generateNodes.length; j++) {
-        const a = generateNodes[i];
-        const b = generateNodes[j];
-
-        const dx = a.x - b.x;
-        const dy = a.y - b.y;
-        const dist = Math.sqrt(dx * dx + dy * dy);
-
-        if (dist < maxDistance) {
-          const sameCluster = a.cluster === b.cluster;
-
-          connections.push({
-            from: { x: a.x, y: a.y },
-            to: { x: b.x, y: b.y },
-            brightness: sameCluster ? 0.9 : 0.4,
+  
+    // --- CONNECTIONS (DENSER + GUARANTEED LINKS) ---
+    const connectionDistance = 160; // increased slightly
+    const baseThreshold = 0.28;     // increased probability
+  
+    // normal probabilistic connections
+    for (let i = 0; i < generatedNodes.length; i++) {
+      for (let j = i + 1; j < generatedNodes.length; j++) {
+        const dx = generatedNodes[i].x - generatedNodes[j].x;
+        const dy = generatedNodes[i].y - generatedNodes[j].y;
+        const distance = Math.sqrt(dx * dx + dy * dy);
+  
+        const r = seededRandom(i * 999 + j * 17);
+  
+        if (distance < connectionDistance && r < baseThreshold) {
+          generatedConnections.push({
+            from: generatedNodes[i],
+            to: generatedNodes[j],
+            brightness: 0.4 + seededRandom(i + j) * 0.6,
             seed: (i * 31 + j * 17) % 1000,
-            isAccent: a.isAccent || b.isAccent,
+            isAccent: generatedNodes[i].isAccent || generatedNodes[j].isAccent,
           });
         }
       }
     }
-
-    return connections;
-  }, [generateNodes]);
-
-  const generateSymbols = useMemo<Symbol[]>(() => {
-    const symbols: Symbol[] = [];
-
+  
+    // --- GUARANTEE: each node connects to its nearest neighbor ---
+    for (let i = 0; i < generatedNodes.length; i++) {
+      let nearestIndex = -1;
+      let nearestDist = Infinity;
+  
+      for (let j = 0; j < generatedNodes.length; j++) {
+        if (i === j) continue;
+  
+        const dx = generatedNodes[i].x - generatedNodes[j].x;
+        const dy = generatedNodes[i].y - generatedNodes[j].y;
+        const dist = dx * dx + dy * dy;
+  
+        if (dist < nearestDist) {
+          nearestDist = dist;
+          nearestIndex = j;
+        }
+      }
+  
+      if (nearestIndex !== -1) {
+        generatedConnections.push({
+          from: generatedNodes[i],
+          to: generatedNodes[nearestIndex],
+          brightness: 0.7,
+          seed: i * 1000 + nearestIndex,
+          isAccent:
+            generatedNodes[i].isAccent || generatedNodes[nearestIndex].isAccent,
+        });
+      }
+    }
+  
+    // --- SYMBOLS (unchanged but slightly denser feel) ---
     for (let i = 0; i < symbolCount; i++) {
-      const cluster = i % 3;
-
-      const x =
-        cluster === 0 ? Math.random() * 350 :
-        cluster === 1 ? 250 + Math.random() * 500 :
-        650 + Math.random() * 350;
-
-      symbols.push({
-        x,
-        y: Math.random() * viewBoxSize,
-        char: mathSymbols[i % mathSymbols.length],
-        cluster,
+      generatedSymbols.push({
+        x: seededRandom(i * 33 + 100) * viewBoxSize,
+        y: seededRandom(i * 33 + 200) * viewBoxSize,
+        char: mathSymbols[
+          Math.floor(seededRandom(i * 33 + 300) * mathSymbols.length)
+        ],
       });
     }
-
-    return symbols;
-  }, [symbolCount, mathSymbols]);
-
-  const [time, setTime] = useState(0);
-
+  
+    setNodes(generatedNodes);
+    setConnections(generatedConnections);
+    setSymbols(generatedSymbols);
+  }, [nodeCount, symbolCount]);
+  // Animation loop
   useEffect(() => {
     const interval = setInterval(() => {
       setTime(t => t + 0.02);
     }, 50);
-
+    
     return () => clearInterval(interval);
   }, []);
 
@@ -161,7 +198,6 @@ export function MathematicalNetwork({
       xmlns="http://www.w3.org/2000/svg"
       style={{ position: 'absolute', inset: 0 }}
     >
-      {/* Soft gradient depth */}
       <defs>
         <radialGradient id="networkGradient" cx="70%" cy="50%" r="60%">
           <stop offset="0%" stopColor={accentColor} stopOpacity={opacity * 1.2} />
@@ -169,60 +205,61 @@ export function MathematicalNetwork({
         </radialGradient>
       </defs>
 
-      {/* CONNECTIONS */}
-      {generateConnections.map((conn, i) => {
+      {/* Connection lines with subtle brightness animation */}
+      {connections.map((conn, i) => {
         const wave = 0.7 + 0.3 * Math.sin(time + conn.seed * 0.01);
-        const opacityVal = opacity * conn.brightness * wave;
-
+        const lineOpacity = opacity * conn.brightness * wave;
         const color = conn.isAccent ? accentColor : strokeColor;
-
+        
         return (
           <line
-            key={`c-${i}`}
+            key={`connection-${i}`}
             x1={conn.from.x}
             y1={conn.from.y}
             x2={conn.to.x}
             y2={conn.to.y}
             stroke={color}
-            strokeOpacity={opacityVal}
+            strokeOpacity={lineOpacity}
             strokeWidth={conn.isAccent ? 0.8 : 0.5}
           />
         );
       })}
 
-      {/* NODES */}
-      {generateNodes.map((node, i) => {
+      {/* Nodes with subtle pulsing animation */}
+      {nodes.map((node, i) => {
         const pulse = 0.85 + 0.15 * Math.sin(time * 0.5 + node.pulseOffset);
+        const nodeOpacity = opacity * 1.4 * pulse;
         const color = node.isAccent ? accentColor : strokeColor;
-
+        
         return (
-          <g key={`n-${i}`}>
+          <g key={`node-${i}`}>
             <circle
               cx={node.x}
               cy={node.y}
-              r={2.3}
+              r="2.3"
               fill="none"
               stroke={color}
-              strokeOpacity={opacity * 1.4 * pulse}
+              strokeOpacity={nodeOpacity}
               strokeWidth="0.7"
             />
             <circle
               cx={node.x}
               cy={node.y}
-              r={1.1}
+              r="1.1"
               fill={color}
-              fillOpacity={opacity * 2 * pulse}
+              fillOpacity={nodeOpacity * 1.2}
             />
           </g>
         );
       })}
 
-      {/* SYMBOLS */}
-      {generateSymbols.map((s, i) => (
+      {/* Scattered mathematical symbols */}
+      {symbols.map((symbol, i) => (
         <text
-          key={`s-${i}`}
-          x={s.x}
-          y={s.y}
+          key={`symbol-${i}`}
+          x={symbol.x}
+          y={symbol.y}
+          fontFamily="Inter, sans-serif"
           fontSize="14"
           fontWeight="500"
           fill={strokeColor}
@@ -230,9 +267,22 @@ export function MathematicalNetwork({
           textAnchor="middle"
           dominantBaseline="middle"
         >
-          {s.char}
+          {symbol.char}
         </text>
       ))}
+
+      {/* Occasional coordinate points */}
+      {Array.from({ length: 8 }).map((_, i) => {
+        const x = 100 + (i % 4) * 200;
+        const y = 100 + Math.floor(i / 4) * 800;
+        
+        return (
+          <g key={`coord-${i}`}>
+            <circle cx={x} cy={y} r="3" fill="none" stroke={strokeColor} strokeOpacity={opacity * 2} strokeWidth="0.5" />
+            <circle cx={x} cy={y} r="1" fill={strokeColor} fillOpacity={opacity * 3} />
+          </g>
+        );
+      })}
     </svg>
   );
 }
