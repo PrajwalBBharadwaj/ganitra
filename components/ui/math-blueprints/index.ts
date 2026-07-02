@@ -26,6 +26,7 @@ export { LogarithmicGraph } from './LogarithmicGraph';
 export { NodeNetwork } from './NodeNetwork';
 export { BinaryTree } from './BinaryTree';
 export { VennDiagram } from './VennDiagram';
+export { MathematicalNetwork } from './MathematicalNetwork';
 
 // Blueprint Components
 export { BlueprintCircle } from './BlueprintCircle';

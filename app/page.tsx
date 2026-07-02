@@ -15,6 +15,7 @@ import {
   BlueprintTriangle,
   BlueprintNodes,
 } from "@/components/ui/MathGraphics";
+import { MathematicalNetwork } from "@/components/ui/math-blueprints";
 
 export default function HomePage() {
   return (
@@ -22,13 +23,18 @@ export default function HomePage() {
       <Hero />
 
       {/* Problem Section — 3 cards with visual hierarchy using accent system */}
-      <section className="bg-surface py-16 sm:py-20">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <section className="relative bg-surface py-16 sm:py-20">
+        {/* Mathematical network background */}
+        <div className="absolute inset-0 opacity-[0.4]">
+          <MathematicalNetwork className="h-full w-full" />
+        </div>
+
+        <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <h2 className="scroll-mt-24 text-center text-2xl font-bold tracking-tight text-primary sm:text-3xl">
-            THE PROBLEM
+            WHAT'S WRONG AND HOW WE FIX IT
           </h2>
 
-          <div className="mt-10 flex flex-col gap-6 lg:flex-row lg:items-center">
+          <div className="mt-10 flex flex-col gap-6 lg:flex-row lg:items-center" >
             {/* Traditional Math — neutral/muted (lowest weight) */}
             <div className="group relative overflow-hidden rounded-2xl border border-border bg-surface-raised p-8 text-center shadow-sm transition-all duration-200 hover:shadow-md lg:flex-1">
               {/* Background graphic — fragmented nodes */}
@@ -66,7 +72,7 @@ export default function HomePage() {
             </div>
 
             {/* Leads To — muted warm treatment (middle weight) */}
-            <div className="group relative overflow-hidden rounded-2xl border border-insight/20 bg-insight/5 p-8 text-center shadow-sm transition-all duration-200 hover:shadow-md lg:flex-1">
+            <div className="group relative overflow-hidden rounded-2xl border border-insight/20 bg-surface-raised p-8 text-center shadow-sm  transition-all duration-200 hover:shadow-md lg:flex-1">
               {/* Background graphic — fading connections */}
               <div className="absolute inset-0 opacity-[0.04]">
                 <IntersectingCircles className="h-full w-full" />
@@ -102,7 +108,7 @@ export default function HomePage() {
             </div>
 
             {/* Ganitra Approach — strongest treatment (destination) */}
-            <div className="group relative overflow-hidden rounded-2xl border-2 border-discovery/30 bg-gradient-to-br from-discovery/15 to-discovery/5 p-8 text-center shadow-md transition-all duration-200 hover:shadow-lg lg:flex-1">
+            <div className="group relative overflow-hidden rounded-2xl border-2 border-discovery/30 bg-gradient-to-br from-[#BFF4F4] via-[#BFF4F4] to-[#BFF4F4] p-8 text-center shadow-md transition-all duration-200 hover:shadow-lg lg:flex-1">
               {/* Background graphic — clean geometric construction */}
               <div className="absolute inset-0 opacity-[0.06]">
                 <TriangleConstruction className="h-full w-full" />
