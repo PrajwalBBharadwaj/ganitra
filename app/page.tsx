@@ -14,6 +14,8 @@ import {
   BlueprintCircle,
   BlueprintTriangle,
   BlueprintNodes,
+  BookIcon,
+  SadFaceIcon,
 } from "@/components/ui/MathGraphics";
 import { MathematicalNetwork } from "@/components/ui/math-blueprints";
 
@@ -45,13 +47,10 @@ export default function HomePage() {
               <div className="relative">
                 <div className="flex items-center justify-center gap-3">
                   <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-text-muted/10 text-text-muted">
-                    <svg width="28" height="28" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <circle cx="24" cy="24" r="18" stroke="currentColor" strokeWidth="1.5" strokeOpacity="0.5" />
-                      <line x1="24" y1="6" x2="24" y2="42" stroke="currentColor" strokeWidth="1" strokeOpacity="0.35" />
-                      <line x1="6" y1="24" x2="42" y2="24" stroke="currentColor" strokeWidth="1" strokeOpacity="0.35" />
-                      <circle cx="24" cy="24" r="3" fill="none" stroke="currentColor" strokeWidth="1" strokeOpacity="0.4" />
-                    </svg>
+                  <BookIcon className="text-curiosity" />
                   </div>
+                  
+
                   <h3 className="text-2xl font-bold text-text-secondary">Traditional Math</h3>
                 </div>
                 <ul className="mt-5 space-y-3 text-base leading-[1.7] text-text-muted">
@@ -63,13 +62,34 @@ export default function HomePage() {
               </div>
             </div>
 
-            {/* Flow Arrow — desktop only */}
+            {/* Flow Arrow — desktop only (solid line) */}
             <div className="hidden lg:flex items-center justify-center px-2">
-              <svg width="48" height="48" viewBox="0 0 48 48" fill="none" className="text-text-muted">
-                <path d="M6 24h36" stroke="currentColor" strokeWidth="2" strokeOpacity="0.5" strokeDasharray="4 4" />
-                <path d="M34 14l10 10-10 10" stroke="currentColor" strokeWidth="2" strokeOpacity="0.6" strokeLinecap="round" strokeLinejoin="round" />
+              <svg
+                width="60"
+                height="75"
+                viewBox="0 0 48 48"
+                fill="none"
+                className="text-text-muted"
+              >
+                {/* Solid line */}
+                <path
+                  d="M6 24h32"
+                  stroke="currentColor"
+                  strokeWidth="3"
+                  strokeLinecap="round"
+                />
+
+                {/* Arrow head */}
+                <path
+                  d="M32 16l10 8-10 8"
+                  stroke="currentColor"
+                  strokeWidth="3"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
               </svg>
             </div>
+            
 
             {/* Leads To — muted warm treatment (middle weight) */}
             <div className="group relative overflow-hidden rounded-2xl border border-insight/20 bg-surface-raised p-8 text-center shadow-sm  transition-all duration-200 hover:shadow-md lg:flex-1">
@@ -81,12 +101,7 @@ export default function HomePage() {
               <div className="relative">
                 <div className="flex items-center justify-center gap-3">
                   <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-insight/15 text-insight">
-                    <svg width="28" height="28" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <circle cx="24" cy="24" r="16" stroke="currentColor" strokeWidth="1.5" strokeOpacity="0.5" />
-                      <circle cx="16" cy="20" r="2" fill="currentColor" fillOpacity="0.4" />
-                      <circle cx="32" cy="20" r="2" fill="currentColor" fillOpacity="0.4" />
-                      <path d="M16 32c2-3 6-4 10-0" stroke="currentColor" strokeWidth="1.5" strokeOpacity="0.4" strokeLinecap="round" />
-                    </svg>
+                  <SadFaceIcon className="text-primary" />
                   </div>
                   <h3 className="text-2xl font-bold text-primary">Leads To</h3>
                 </div>
@@ -98,14 +113,36 @@ export default function HomePage() {
                 </ul>
               </div>
             </div>
+            
 
-            {/* Flow Arrow — desktop only */}
+            {/* Flow Arrow — desktop only (solid line) */}
             <div className="hidden lg:flex items-center justify-center px-2">
-              <svg width="48" height="48" viewBox="0 0 48 48" fill="none" className="text-text-muted">
-                <path d="M6 24h36" stroke="currentColor" strokeWidth="2" strokeOpacity="0.5" strokeDasharray="4 4" />
-                <path d="M34 14l10 10-10 10" stroke="currentColor" strokeWidth="2" strokeOpacity="0.6" strokeLinecap="round" strokeLinejoin="round" />
+              <svg
+                width="60"
+                height="75"
+                viewBox="0 0 48 48"
+                fill="none"
+                className="text-text-muted"
+              >
+                {/* Solid line */}
+                <path
+                  d="M6 24h32"
+                  stroke="currentColor"
+                  strokeWidth="3"
+                  strokeLinecap="round"
+                />
+
+                {/* Arrow head */}
+                <path
+                  d="M32 16l10 8-10 8"
+                  stroke="currentColor"
+                  strokeWidth="3"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
               </svg>
             </div>
+            
 
             {/* Ganitra Approach — strongest treatment (destination) */}
             <div className="group relative overflow-hidden rounded-2xl border-2 border-discovery/30 bg-gradient-to-br from-[#BFF4F4] via-[#BFF4F4] to-[#BFF4F4] p-8 text-center shadow-md transition-all duration-200 hover:shadow-lg lg:flex-1">
@@ -116,11 +153,10 @@ export default function HomePage() {
 
               <div className="relative">
                 <div className="flex items-center justify-center gap-3">
-                  <div className="flex h-14 w-14 items-center justify-center rounded-xl bg-discovery/25 text-discovery shadow-sm">
-                    <EyeIcon className="h-7 w-7" />
-                  </div>
-                  <h3 className="text-2xl font-bold text-primary">Ganitra Approach</h3>
-                </div>
+                 <EyeIcon className="text-discovery" />
+                 <h3 className="text-2xl font-bold text-primary">Ganitra Approach</h3>
+               </div>
+
                 <ul className="mt-5 space-y-3 text-base leading-[1.7] text-text-secondary">
                   <li>• Visual Understanding</li>
                   <li>• Intuition First</li>
